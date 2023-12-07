@@ -18,10 +18,20 @@
                 </div>
             </div>
         </div>
-        <div class=" w-full md:w-64 lg:w-48 h-20 md:h-20 lg:h-20 bg-gray-300 rounded-lg mt-6 md:mt-0">
+        <div class=" terminalBanner w-full md:w-64 lg:w-48 h-20 md:h-20 lg:h-20 bg-gray-300 rounded-lg mt-6 md:mt-0">
         juz mam tego dosv
         </div>
     </div>
 </div>
 </div>
 
+    <style>
+        @keyframes floatAnimation {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .terminalBanner {
+        animation: floatAnimation 3s ease-in-out infinite;
+    }
+</style>

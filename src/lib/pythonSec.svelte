@@ -1,104 +1,117 @@
-    
 <script lang="ts">
   import { onDestroy, tick } from 'svelte';
+  import IntersectionObserver from "svelte-intersection-observer";
 
-  let images = ["placeHolder_table.png", "pythonImage.png"];
+  let images = ["pythonImage.png", "placeHolder_table.png"];
   let currentImage = images[0];
   let currentIndex = 0;
-  let fadeClass = 'image-fade-in';
+  let fadeClass = 'image-visible'; 
+  let intersecting  
+  let banner: HTMLElement;
+  let interval;
+  function setupInterval() {
+    interval = setInterval(changeImage, 5000); // Set up interval
+  }
+
+  function clearExistingInterval() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
 
   async function changeImage() {
     fadeClass = 'image-fade-out';
     await tick(); 
-    await new Promise(r => setTimeout(r, 1000)); 
+    await new Promise(r => setTimeout(r, 1000));
 
     currentIndex = (currentIndex + 1) % images.length;
     currentImage = images[currentIndex];
-    
+    fadeClass = 'image-invisible'; 
+    await tick();
+
     fadeClass = 'image-fade-in';
-    await tick(); 
-    await new Promise(r => setTimeout(r, 3000)); 
+    await new Promise(r => setTimeout(r, 1000)); 
   }
 
-  const interval = setInterval(changeImage, 5000);
+  onDestroy(clearExistingInterval);
 
-  onDestroy(() => {
-    clearInterval(interval);
-  });
+  $: if (intersecting ) {
+    setupInterval();
+  } else {
+    clearExistingInterval();
+  }
 </script>
 
+<div class="bg-gradient-to-b from-[#3f0f4c] via-[#29148a] to-[#1d58a0] ">
+    <div class="flex px-4 pt-28 pr-50 items-center gap-56  justify-end  md:flex-row md:pr-28"> 
 
-
-<div class="bg-gradient-to-b from-[#3f0f4c] via-[#29148a] to-[#1d58a0] flex items-center justify-end">
-
-       <div class="bg-[#191449] p-14 rounded-lg  animate-float">
-            <p class="font-bold text-white text-center">At work i utilze Python to modyfie datasets<br>At home i wirte scripts to enhance DX </p>
+        <div class="bg-[#191449] p-4 md:p-14 rounded-lg animate-float md:flex animate-float items-center hidden ">
+            <p class="font-bold text-white text-center">At work I utilize Python to modify datasets<br>At home I write scripts to enhance DX</p>
         </div>
 
+        <section class="flex flex-col w-full border-4  md:w-auto rounded-lg min-w-[340px]  "> 
+            <div class=" flex bg-white justify-between ">
+                <div class="flex gap-2">
+                    <span class="material-symbols-outlined">search</span>
 
-    <section class="flex flex-col items-end  pt-64 px-44"> <!-- Adjust for centering -->
-
-        <div class="border-gray-300 flex items-center flex-col ">
-            <div class="order-1 md:order-2 carousel flex flex-col rounded-lg z-10 w-[600px] mx-auto"> <!-- Set width to match the image and center it -->
-                <div class="bg-white p-2 shadow-md">
-                    <div class="flex items-center space-x-2"> 
-                        <div class="flex">
-                            <input type="text" class="px-3 py-1 border font-bold text-violet-800 rounded hover:bg-gray-100 pl-10" value="Not scared of Data or Scriptig" readonly style="cursor: not-allowed;">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <i class="fas fa-search text-gray-500"></i>
-                            </span>
-                        </div>
-                        <span class="material-symbols-outlined">undo</span>
-                        <span class="material-symbols-outlined">redo</span>
-                        <span class="material-symbols-outlined">print</span>
-                        <span class="material-symbols-outlined">imagesearch_roller</span>
-
-                        <button class="px-3 py-1 hover:bg-gray-100">100%</button>
-                        <span class="material-symbols-outlined">arrow_drop_down</span>
-                        <span class="material-symbols-outlined">percent</span>
-                        <span class="material-symbols-outlined">format_bold</span>
-
-                        <div class="flex-grow"></div>
-
-                        <button class="p-2 hover:bg-gray-100">
-                            <i class="fas fa-star text-gray-600"></i>
-                        </button>
-                        <button class="p-2 hover:bg-gray-100">
-                            <i class="fas fa-comment-alt text-gray-600"></i>
-                        </button>
-                    
-                    </div>
+                    <input type="text" class="w-1/2 md:w-full hidden md:flex font-bold text-violet-800 " value="Not scared of Data "> 
+                </div>
+                <div class="flex space-x-1">
+                    <span class="material-symbols-outlined">undo</span>
+                    <span class="material-symbols-outlined">redo</span>
+                    <span class="material-symbols-outlined">print</span>
+                    <span class="material-symbols-outlined">imagesearch_roller</span>
+                    <button class="hover:bg-gray-100">100%</button>
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
+                    <span class="material-symbols-outlined">percent</span>
+                    <span class="material-symbols-outlined">format_bold</span>
                 </div>
             </div>
+                
+        <div class="imgs w-full"> 
+            <IntersectionObserver bind:intersecting threshold={0.8}  element={banner}>
+            <img bind:this={banner} src={currentImage} alt="Excel-like table" class={`min-w-[340px] min-h-[400px] md:w-[600px] md:h-[600px]  border-4 border-gray-300 shadow-xl ${fadeClass}`}>
+            </IntersectionObserver>
         </div>
-
-    <img src={currentImage} alt="Excel-like table" class={`w-[600px] h-[600px] rounded-lg border-4 border-gray-300 shadow-xl ${fadeClass}`}>
-
-
-    </section>
+        </section>
+    </div>
 </div>
+
+    
 <style>
   @keyframes floatAnimation {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
   }
 
-@keyframes fadeInAnimation {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  @keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-@keyframes fadeOutAnimation {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
+  @keyframes fadeOutAnimation {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
 
-.image-fade-in {
-  animation: fadeInAnimation 5s ease-in-out;
-}
+  .image-visible {
+    opacity: 1;
+  }
 
-.image-fade-out {
-  animation: fadeOutAnimation 5s ease-in-out;
-}
+  .image-invisible {
+    opacity: 0;
+  }
 
+  .image-fade-in {
+    animation: fadeInAnimation 1s ease-in-out forwards;
+  }
+
+  .image-fade-out {
+    animation: fadeOutAnimation 1s ease-in-out forwards;
+  }
+.animate-float {
+    animation: floatAnimation 3s ease-in-out infinite;
+}
 </style>
+

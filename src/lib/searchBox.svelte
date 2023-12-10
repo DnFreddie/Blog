@@ -1,12 +1,59 @@
+<script lang="ts">
+  import { getContext } from 'svelte';
+  const data = getContext('my-var');
+  let searchValue = '';
+  let visiblePosts = [];
+  let isOverlayVisible = false;
 
+  $: visiblePosts = searchValue.trim()
+    ? data.filter(post => 
+        post.title.toLowerCase().includes(searchValue.toLowerCase())).slice(0, 3)
+    : [];
 
-<div class="flex flex-col  rounded-lg z-20 relative bg-[#1e2836]   w-1/3 p-4 shadow-md min-w-[200px]">
-    <label class="text-lg font-bold text-white mb-2" for="search">Definitely not what you think...</label>
+  const toggleOverlay = (visible) => {
+    isOverlayVisible = visible;
+  };
+</script>
 
+<style>
+  .search-results {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    z-index: 50;
+    width: 100%; 
+  }
+</style>
+
+<div class="flex flex-col relative pb-7">
+  <div class="flex flex-col rounded-lg relative z-20 bg-[#1e2836] w-1/3 p-4 shadow-md lg:min-w-[500px] min-w-[300px]">
+    <label class="text-lg font-bold text-white mb-2" for="search">
+      Definitely not what you think...
+    </label>
     <input 
-        class="rounded-lg bg-black border border-gray-600 hover:border-gray-500 focus:border-[#D0321] focus:outline-none text-white px-4 py-2" 
-        type="search" 
-        id="search"
-        placeholder="Intersted in my blog ...">
+      class="rounded-lg bg-black border border-gray-600 hover:border-gray-500 focus:border-[#D0321] focus:outline-none text-white px-4 py-2" 
+      type="search" 
+      id="search"
+      placeholder="Interested in my blog..."
+      bind:value={searchValue}
+      on:focus={() => toggleOverlay(true)}
+      on:blur={() => toggleOverlay(false)}>
+  </div>
 
-    </div>
+  {#if isOverlayVisible}
+    <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+  {/if}
+
+  <div class="search-results">
+    {#each visiblePosts as post}
+      <div class="border border-gray-300 p-2 mb-2 rounded bg-sky-50 z-40">
+        <a href={`/blog/${post.hash}`} class="no-underline">
+          <h2 class="text-xl mb-1">{post.title}</h2>
+        </a>
+        <p class="text-gray-600 text-sm">{post.hash}</p>
+        <p class="text-gray-500 text-xs">{post.date}</p>
+      </div>
+    {/each}
+  </div>
+</div>
+

@@ -1,6 +1,8 @@
 <script lang="ts"> 
 	/** @type {import('./$types').PageData} */
-    export let data
+    import { getContext } from 'svelte'
+    const data = getContext('my-var')
+
 </script>
 
 
@@ -10,7 +12,7 @@
 
             <h1>Welcome to my blog</h1>
 
-            {#each data.posts as post}
+            {#each data as post}
             <div class="post-container" style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 4px;">
                     <a href={`/blog/${post.hash}`}>
                 <h2 style="font-size: 20px; margin-bottom: 5px;">{post.title}</h2>

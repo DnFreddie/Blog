@@ -11,7 +11,15 @@
     : [];
 
   const toggleOverlay = (visible) => {
-    isOverlayVisible = visible;
+      setTimeout(() => {
+             isOverlayVisible = visible;
+
+      },109)
+
+
+  };
+  const handleLinkClick = () => {
+    searchValue = ''; 
   };
 </script>
 
@@ -42,12 +50,11 @@
 
   {#if isOverlayVisible}
     <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-  {/if}
 
   <div class="search-results">
     {#each visiblePosts as post}
       <div class="border border-gray-300 p-2 mb-2 rounded bg-sky-50 z-40">
-        <a href={`/blog/${post.hash}`} class="no-underline">
+        <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
           <h2 class="text-xl mb-1">{post.title}</h2>
         </a>
         <p class="text-gray-600 text-sm">{post.hash}</p>
@@ -55,5 +62,6 @@
       </div>
     {/each}
   </div>
+  {/if}
 </div>
 

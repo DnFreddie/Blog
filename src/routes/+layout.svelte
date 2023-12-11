@@ -13,4 +13,3 @@ setContext('my-var', data.postst)
 
 <slot />
 <Footer/>
-<style></style>

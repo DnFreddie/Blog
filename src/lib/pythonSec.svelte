@@ -55,7 +55,7 @@
                 <div class="flex gap-2">
                     <span class="material-symbols-outlined">search</span>
 
-                    <input type="text" class="w-1/2 md:w-full hidden md:flex font-bold text-violet-800 " value="Not scared of Data "> 
+                    <input type="text" readonly class="w-1/2 md:w-full hidden md:flex font-bold text-violet-800 "  value="Not scared of Data "> 
                 </div>
                 <div class="flex space-x-1">
                     <span class="material-symbols-outlined">undo</span>

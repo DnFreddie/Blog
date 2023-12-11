@@ -4,7 +4,7 @@
   let banner: HTMLElement;
 </script>
 
-<IntersectionObserver  export let:intersecting element={banner}>
+<IntersectionObserver  let:intersecting element={banner}>
     <div bind:this={banner} class="banner w-full relative h-24 border border-transparent my-40 overflow-hidden">
   {#if intersecting}
       <div class=" absolute top-0 left-0 h-full w-full"></div>

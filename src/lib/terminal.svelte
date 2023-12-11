@@ -35,164 +35,104 @@
         animation: floatAnimation 3s ease-in-out infinite;
     }
 </style>
-     <script lang="ts">
-    import { onMount, onDestroy } from 'svelte';
+        
+        <script lang="ts">
+  import { onMount } from 'svelte';
 
-    let canvas;
-    let ctx;
-    let adjustX = 0;
-    let adjustY = -10;
-    let textCoordinates;
-    let particleArray = [];
-    let isExploding = false;
-    let animationId;
-    let resizeTimeout;
+  let canvas;
+  let ctx;
+  let animationId;
+  let prevWidth;
+  let prevHeight;
+  let particles = [];
+  const sentence = "Linux Lover";
+  let explode = false; // Flag to control the explosion
 
-    class Particle {
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
-            this.size = 3;
-            this.baseX = this.x;
-            this.baseY = this.y;
-            this.density = (Math.random() * 30) + 1;
-            this.angle = Math.random() * (2 * Math.PI);
-            this.speed = Math.random() * 5 + 1;
-            this.distance = 0;
-        }
-
-        draw() {
-            ctx.fillStyle = 'orange';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.closePath();
-            ctx.fill();
-        }
-
-        explode() {
-            this.distance += this.speed;
-            this.x = this.baseX + Math.cos(this.angle) * this.distance;
-            this.y = this.baseY + Math.sin(this.angle) * this.distance;
-        }
-    }
-function init() {
-    particleArray = [];
-    const startX = (canvas.width - textCoordinates.width) / 2;
-    const startY = (canvas.height - textCoordinates.height) / 2;
-    const skipPixels = 5; // Skip every 5 pixels
-
-    for (let y = 0, y2 = textCoordinates.height; y < y2; y += skipPixels) {
-        for (let x = 0, x2 = textCoordinates.width; x < x2; x += skipPixels) {
-            if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
-                let positionX = x + startX;
-                let positionY = y + startY;
-                particleArray.push(new Particle(positionX, positionY));
-            }
-        }
-    }
-}
-
-
-function animateText(resolve) {
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw and explode particles
-    for (let i = 0; i < particleArray.length; i++) {
-        particleArray[i].draw();
-        if (isExploding) {
-            particleArray[i].explode();
-        }
+  class Particle {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.size = Math.random() * 1;
+      this.speedX = Math.random() * 3 - 1.5;
+      this.speedY = Math.random() * 3 - 1.5;
     }
 
-    // Continue the animation
-    requestAnimationFrame(() => animateText(resolve));
-}
-   
-    function connect() {
-        let opacityValue = 1;
-        for (let a = 0; a < particleArray.length; a++) {
-            for (let b = a; b < particleArray.length; b++) {
-                let dx = particleArray[a].x - particleArray[b].x;
-                let dy = particleArray[a].y - particleArray[b].y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 20) {
-                    opacityValue = 1 - (distance / 20);
-                    ctx.strokeStyle = `rgba(255,255,255,${opacityValue})`;
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(particleArray[a].x, particleArray[a].y);
-                    ctx.lineTo(particleArray[b].x, particleArray[b].y);
-                    ctx.stroke();
-                }
-            }
-        }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
     }
-function linuxExplosion() {
-    return new Promise((resolve) => {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
 
-        const fontSize = Math.floor(canvas.width / 10);
-        ctx.font = `bold ${fontSize}px Verdana`;
+    draw() {
+      ctx.fillStyle = 'orange';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
 
-        const text = 'Linux Lover';
-        const textWidth = ctx.measureText(text).width;
-        const x = (canvas.width - textWidth) / 2;
-        const y = (canvas.height / 2) + (fontSize / 2);
+  function init() {
+    ctx.font = '30px Arial';
+    ctx.fillStyle = 'orange';
+    ctx.textAlign = 'center';
+    ctx.fillText(sentence, canvas.width / 2, canvas.height / 2);
 
-        ctx.fillStyle = 'white';
-        ctx.fillText(text, x, y);
+    setTimeout(() => {
+      explode = true;
+      particles = [];
+      const numberOfParticles = sentence.length * 100;
+      for (let i = 0; i < numberOfParticles; i++) {
+        const x = canvas.width / 2;
+        const y = canvas.height / 2;
+        particles.push(new Particle(x, y));
+      }
+    }, 5000); // Delay before the explosion starts
+  }
 
-        // Capture the text in an image data
-        textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  function scaleParticlePositions() {
+    const scaleX = canvas.width / prevWidth;
+    const scaleY = canvas.height / prevHeight;
 
-        // Initialize particles based on the text
-        init();
-
-        // Set a timeout to start the explosion
-        setTimeout(() => {
-            isExploding = true;
-        }, 3000);
-
-        // Start the animation
-        animateText(resolve);
+    particles.forEach(particle => {
+      particle.x *= scaleX;
+      particle.y *= scaleY;
     });
-}
 
-    function handleResize() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            if (typeof window !== 'undefined') {
-                resizeCanvas();
-            }
-        }, 100);
+    prevWidth = canvas.width;
+    prevHeight = canvas.height;
+  }
+
+  function animate() {
+    if (explode) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillText(sentence, canvas.width / 2, canvas.height / 2);
     }
+    animationId = requestAnimationFrame(animate);
+  }
 
-    function resizeCanvas() {
-        // Set canvas dimensions based on its container size
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-
-        // Redraw or reinitialize canvas content here
-        linuxExplosion().then(() => {
-            // Additional logic after reinitializing, if needed
-        });
+  function handleResize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if (!explode) {
+      ctx.font = '30px Arial';
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.fillText(sentence, canvas.width / 2, canvas.height / 2);
     }
+    scaleParticlePositions();
+  }
 
-    //onMount(() => {
-      //  if (typeof window !== 'undefined') {
-       //     ctx = canvas.getContext('2d');
-         //   resizeCanvas(); // Initial resize
-         //   window.addEventListener('resize', handleResize);
-       // }
-   // });
+  onMount(() => {
+    ctx = canvas.getContext('2d');
+    init();
+    animate();
+  });
 
-    //nDestroy(() => {
-       // if (typeof window !== 'undefined') {
-      //      window.removeEventListener('resize', handleResize);
-        //    cancelAnimationFrame(animationId);
-        //}
-    //});
 </script>
+
+

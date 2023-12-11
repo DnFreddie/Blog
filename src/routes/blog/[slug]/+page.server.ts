@@ -5,14 +5,17 @@ import { santeizeM } from "$lib/mdRender"
 
  const    app = initDb()
      const slug = params.slug
-    const collList =await getItem(app,slug,"blogPosts","hash")
+    const collList =await getItem(app,slug,"blogPosts","title")
     const url =  collList[0]
     const request  =  await fetch( url.contentURL)
     const blob = await request.text()
     const toRender = santeizeM(blob)
 
     return{
-        title:toRender
+        content:toRender,
+        title:slug
+
+
 
     }
 

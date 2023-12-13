@@ -18,7 +18,7 @@
         </div>
  
                  <div class=" terminalBanner bg-[#331233] p-14 rounded-lg">
-            <p class="font-bold text-white text-center">I've learned Linux for 2 years.<br>Never got enough of it</p>
+            <p class="font-bold text-white text-center">I've been learning Linux for 2 years <br>Never got enough of it</p>
         </div>
 
     </div>

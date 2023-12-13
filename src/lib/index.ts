@@ -64,6 +64,10 @@ const app = initializeApp(firebaseConfig);
     return downloadURL;
 }
 
+
+
+
+
 export async function addBlogPost(file:ArrayBuffer, title:string,app :FirebaseApp) {
     const storage:FirebaseStorage = getStorage(app)
     const downloadURL = await uploadFileAndGetURL(file,storage,title);

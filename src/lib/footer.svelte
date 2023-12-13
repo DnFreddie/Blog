@@ -15,7 +15,10 @@
      <img src=" favicon.png"alt="Logo" class="h-16 w-20 hidden md:flex rounded-lg  ">
           <div class="flex flex-col items-start space-y-2">
     <span class="font-bold text-white">DefnotFreddie</span>
-    <span class="text-gray-400">randomemail@gmail.com</span>
+      <a href="mailto:defnotfreddie@proton.me" class="hover:text-violet-500 transition duration-300">
+    <span class="text-gray-400">defnotfreddie@proton.me</span>
+</a>
+
         </div>
 </div>
 

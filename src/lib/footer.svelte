@@ -31,11 +31,10 @@
                 <a href="https://www.linkedin.com/in/fryderyk-%C5%82ysiak-b49426254/" target="_blank" class="inline-block p-0">
                     <img src="icons8-linkedin-48.png" class="social-logo m-auto" loading="lazy" alt="LinkedIn">
                 </a>
-                <a href="https://github.com/DnFreddie" target="_blank" class="inline-block p-0">
+                <a href="https://github.com/DnFreddie" target="_blank" class="inline-block p-0 ">
                     <img src= "icons8-github-48.png"class="social-logo m-auto" loading="lazy" alt="GitHub">
                 </a>
             </div>
-
 
 
     </div>

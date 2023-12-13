@@ -20,11 +20,12 @@
 
     }
 </script>
-<div class="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#895cd1] via-[#2b125f] to-[#3f0f4c] ">
+<div class="flex flex-col items-center min-h-screen  bg-gradient-to-b from-[#885cd1] via-black to-[#002a41]  ">
+
     <section class="w-full max-w-md p-4">
         <h1 class="text-2xl font-bold text-center mb-6">Most recent Posts </h1>
         {#each data as post } 
-            <div class="break-words text-white mb-4 bg-black shadow rounded p-4">
+            <div class="break-words text-white mb-4 bg-black shadow rounded p-4 post-box" >
                 <div class="flex justify-between">
                     <a href={`/blog/${post.title}`} class="text-xl font-semibold hover:underline">
                         <h2>{post.title.replace('.md','').replaceAll('_',' ')}</h2>
@@ -51,3 +52,30 @@
 {/each}
                        </section>
 </div>
+<style>
+.post-box {
+    border-radius: 20px;
+    background: #f0f0f0;
+    box-shadow: 10px 10px 20px grey; /* Adjusted for gray shadow */
+    border: 2px solid fuchsia; /* Added fuchsia border */
+    animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes anime {
+    0% {
+        width: 40px;
+        height: 40px;
+        background: black;
+        box-shadow: 5px 5px 10px grey; /* Adjusted for gray shadow */
+        opacity: 0.5;
+    }
+    100% {
+        width: 480px;
+        height: 140px;
+        background: black;
+        box-shadow: 10px 10px 20px grey; /* Adjusted for gray shadow */
+        opacity: 1;
+    }
+}
+</style>
+

@@ -56,24 +56,23 @@
 .post-box {
     border-radius: 20px;
     background: #f0f0f0;
-    box-shadow: 10px 10px 20px grey; /* Adjusted for gray shadow */
-    border: 2px solid fuchsia; /* Added fuchsia border */
+    box-shadow: 10px 10px 20px grey; 
+    border: 2px solid fuchsia; 
     animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes anime {
     0% {
-        width: 40px;
-        height: 40px;
-        background: black;
-        box-shadow: 5px 5px 10px grey; /* Adjusted for gray shadow */
+         width: 20%; 
+        height: 40px;       background: black;
+        box-shadow: 5px 5px 10px grey; 
         opacity: 0.5;
     }
     100% {
-        width: 480px;
+        width: 100% ;
         height: 140px;
         background: black;
-        box-shadow: 10px 10px 20px grey; /* Adjusted for gray shadow */
+        box-shadow: 10px 10px 20px grey; 
         opacity: 1;
     }
 }

@@ -1,8 +1,6 @@
 <script lang='ts'>
 
 
-/** @type {import('./$types').PageData} */
-export let data;
 	/** @type {import('./$types').ActionData} */
 export let form;
 let logged = false

@@ -53,11 +53,11 @@
 
   <div class="search-results">
     {#each visiblePosts as post}
-      <div class="border border-gray-300 p-2 mb-2 rounded bg-sky-50 z-40">
+      <div class="border   p-2 mb-2 rounded bg-black z-40 border-fuchsia-500">
         <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
-          <h2 class="text-xl mb-1">{post.title}</h2>
+          <h2 class="text-xl mb-1 text-white">{post.title}</h2>
         </a>
-        <p class="text-gray-600 text-sm">{post.hash}</p>
+        <p class="text-gray-600 text-sm hidden sm:break-words md:block">{post.hash}</p>
         <p class="text-gray-500 text-xs">{post.date}</p>
       </div>
     {/each}

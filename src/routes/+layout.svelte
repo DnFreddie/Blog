@@ -11,5 +11,9 @@ setContext('my-var', data.postst)
 </script>
     <NavBar/>
 
+
+<div>
+
 <slot />
+</div>
 <Footer/>

@@ -5,6 +5,26 @@
   let visiblePosts = [];
   let isOverlayVisible = false;
 
+  function formatTimestamp(timestamp) {
+    const date = new Date(timestamp);
+
+    // Format the date and time parts
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Month is 0-indexed
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    // Pad single digit minutes and seconds with a leading zero
+    const paddedMonth = month.toString().padStart(2, '0');
+    const paddedDay = day.toString().padStart(2, '0');
+    const paddedHours = hours.toString().padStart(2, '0');
+
+    // Combine the parts into a readable format
+    return `${year}-${paddedMonth}-${paddedDay}  `;
+}
+
 function formatString(str) {
     let formattedStr = str.replace('.md', '');
 
@@ -73,7 +93,7 @@ function formatString(str) {
         <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
           <h2 class="text-xl mb-1 text-white">{formatString(post.title)}</h2>
         </a>
-        <p class="text-gray-400 text-xs">{post.date}</p>
+        <p class="text-gray-400 text-xs">{formatTimestamp(post.date)}</p>
       </div>
     {/each}
   </div>

@@ -6,8 +6,8 @@ import Drive from "./drive.svelte";
 <div class="flex flex-col bg-gradient-to-b from-[#1d58a0] via-[#2692ab] to-[#2d8b8e] ">
     <Drive/>
     <div class="flex-grow flex flex-col md:flex-row-reverse md:mx-60 ">
-        <div class="flex justify-center items-center  flex-grow px-7 pb-20 ">
-            <div class="golangBanner bg-[#177578] sm:p-16 md:p-16  px-7 rounded-lg flex items-center justify-center ">
+        <div class="flex justify-center items-center  flex-col flex-grow px-7 pb-20 ">
+            <div class="golangBanner bg-[#177578] sm:p-16 md:p-16 p-6 px-7 rounded-lg flex items-center justify-center ">
                 <p class="font-bold text-white text-center text-lg">
                     I've been learning GoLang and Podman<br>
                     I'm looking for opportunities to work in cloud.</p>

@@ -107,9 +107,3 @@ export async function getItem(app :FirebaseApp ,param :string,col:string,id:stri
 
 
 
-
-
-
-    
-
-

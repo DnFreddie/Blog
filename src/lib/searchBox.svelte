@@ -5,6 +5,22 @@
   let visiblePosts = [];
   let isOverlayVisible = false;
 
+function formatString(str) {
+    let formattedStr = str.replace('.md', '');
+
+    formattedStr = formattedStr.replace(/_/g, ' ');
+
+    formattedStr = formattedStr.split(' ')
+                               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                               .join(' ');
+
+    return formattedStr;
+}
+
+
+
+
+
   $: visiblePosts = searchValue.trim()
     ? data.filter(post => 
         post.title.toLowerCase().includes(searchValue.toLowerCase())).slice(0, 3)
@@ -49,16 +65,15 @@
   </div>
 
   {#if isOverlayVisible}
-    <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+    <div class="fixed inset-0 bg-black bg-opacity-80"></div>
 
   <div class="search-results">
     {#each visiblePosts as post}
-      <div class="border   p-2 mb-2 rounded bg-black z-40 border-fuchsia-500">
+      <div class="border-2   p-2 mb-2 rounded bg-black z-40 border-fuchsia-500">
         <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
-          <h2 class="text-xl mb-1 text-white">{post.title}</h2>
+          <h2 class="text-xl mb-1 text-white">{formatString(post.title)}</h2>
         </a>
-        <p class="text-gray-600 text-sm hidden sm:break-words md:block">{post.hash}</p>
-        <p class="text-gray-500 text-xs">{post.date}</p>
+        <p class="text-gray-400 text-xs">{post.date}</p>
       </div>
     {/each}
   </div>

@@ -3,32 +3,44 @@
     import { getContext } from 'svelte'
 
   
+ function formatString(str) {
+    // Remove the file extension
+    let formattedStr = str.replace('.md', '');
+
+    // Replace underscores with spaces
+    formattedStr = formattedStr.replace(/_/g, ' ');
+
+    // Capitalize the first letter of each word
+    formattedStr = formattedStr.split(' ')
+                               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                               .join(' ');
+
+    return formattedStr;
+}
     const data = getContext('my-var')
 
     data.sort((a, b) => {
         return b.date.localeCompare(a.date);
     });
+
+
+
     function copyHash(hash:string){
 
 
-
   navigator.clipboard.writeText(hash);
-
-
-
-
-
     }
-</script>
+
+    </script>
 <div class="flex flex-col items-center min-h-screen  bg-gradient-to-b from-[#885cd1] via-black to-[#002a41]  ">
 
     <section class="w-full max-w-md p-4">
-        <h1 class="text-2xl font-bold text-center mb-6">Most recent Posts </h1>
+        <h1 class="text-2xl font-bold text-center mb-6">Most Recent Posts </h1>
         {#each data as post } 
             <div class="break-words text-white mb-4 bg-black shadow rounded p-4 post-box" >
                 <div class="flex justify-between">
                     <a href={`/blog/${post.title}`} class="text-xl font-semibold hover:underline">
-                        <h2>{post.title.replace('.md','').replaceAll('_',' ')}</h2>
+                        <h2>{formatString(post.title)}</h2>
                     </a>
 
             <div class=" flex sm:bg-none p-1 bg-gray-800 rounded-lg" >
@@ -73,7 +85,6 @@
         height: 140px;
         background: black;
         box-shadow: 10px 10px 20px grey; 
-        opacity: 1;
     }
 }
 </style>

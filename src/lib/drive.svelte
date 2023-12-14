@@ -5,11 +5,11 @@
 </script>
 
 <IntersectionObserver  let:intersecting element={banner}>
-    <div bind:this={banner} class="banner w-full relative h-24 border border-transparent my-40 overflow-hidden">
+    <div bind:this={banner} class="banner w-full relative h-24 border border-transparent my-40 ">
   {#if intersecting}
       <div class=" absolute top-0 left-0 h-full w-full"></div>
       <div class="content-container absolute top-0 left-0 text-white p-4 ">
-        <div class="flex items-center">
+        <div class="flex items-center flex-col sm:flex-row space-y-10 sm:space-y-0 ">
           <p class="text-2xl font-bold">{text}</p>
           <img src="golang_official_logo_icon_169092.png" alt="GoLang Logo" class="h-16 ml-4"/>
         </div>

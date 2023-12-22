@@ -12,7 +12,7 @@
         <div class="flex gap-12">
 
 
-     <img src=" favicon.png"alt="Logo" class="h-16 w-20 hidden md:flex rounded-lg  ">
+     <img src="/favicon.png"alt="Logo" class="h-16 w-20 hidden md:flex rounded-lg  ">
           <div class="flex flex-col items-start space-y-2">
     <span class="font-bold text-white">DefnotFreddie</span>
       <a href="mailto:defnotfreddie@proton.me" class="hover:text-violet-500 transition duration-300">
@@ -29,10 +29,10 @@
     </div>
              <div class="flex items-center space-x-4">
                 <a href="https://www.linkedin.com/in/fryderyk-%C5%82ysiak-b49426254/" target="_blank" class="inline-block p-0">
-                    <img src="icons8-linkedin-48.png" class="social-logo m-auto" loading="lazy" alt="LinkedIn">
+                    <img src="/icons8-linkedin-48.png" class="social-logo m-auto" loading="lazy" alt="LinkedIn">
                 </a>
                 <a href="https://github.com/DnFreddie" target="_blank" class="inline-block p-0 ">
-                    <img src= "icons8-github-48.png"class="social-logo m-auto" loading="lazy" alt="GitHub">
+                    <img src= "/icons8-github-48.png"class="social-logo m-auto" loading="lazy" alt="GitHub">
                 </a>
             </div>
 

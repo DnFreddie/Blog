@@ -3,7 +3,7 @@
 
     <div class=" flex  lg:ml-20 justify-start sm:items-center  lg:items-start md:items-center px-6 ">
 
-  <div class="flex flex-col items-center md:flex-row mt-20 gap-24 space-x-0 md:space-x-6">
+  <div class="flex flex-col items-center md:flex-row mt-10 gap-24 space-x-0 md:space-x-6">
         <div class="flex flex-col space-y-0">
             <div class="w-full md:w-120 bg-gray-800 space-x-4 flex rounded-t-sm md:rounded-t-none justify-start items-center px-6 py-2"> 
                 <div class="w-6 h-6 bg-red-500 rounded-full"></div>

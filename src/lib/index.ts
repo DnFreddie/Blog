@@ -59,7 +59,6 @@ const app = initializeApp(firebaseConfig);
     await uploadBytes(fileRef, file );
 
     const downloadURL = await getDownloadURL(fileRef);
-    console.log(downloadURL)
 
     return downloadURL;
 }

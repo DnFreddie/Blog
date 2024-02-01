@@ -1,12 +1,11 @@
-
 import { initDb,getColl } from "$lib"
 
 export async   function load (){
     const app = initDb()
-    const collList = await getColl(app,"blogPosts")
+    const poemsList = await getColl(app,"poems")
 
 return{
-     postst: collList
+     poems: poemsList
     
 
         }

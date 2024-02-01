@@ -54,7 +54,6 @@
 <div class="flex flex-col items-center min-h-screen  bg-gradient-to-b from-[#885cd1] via-black to-[#002a41]  ">
 
     <section class="w-full max-w-md p-4">
-        <h1 class="text-2xl font-bold text-center mb-6">Most Recent Posts </h1>
         {#each data as post } 
             <div class="break-words text-white mb-4 bg-black shadow rounded p-4 post-box" >
                 <div class="flex justify-between">

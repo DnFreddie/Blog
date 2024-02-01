@@ -69,16 +69,16 @@ function formatString(str) {
   }
 </style>
 
-<div class="flex flex-col relative pb-7">
-  <div class="flex flex-col rounded-lg relative z-20 bg-[#1e2836] w-1/3 p-4 shadow-md lg:min-w-[500px] min-w-[300px]">
-    <label class="text-lg font-bold text-white mb-2" for="search">
+<div class="flex flex-col relative sm:pb-4  ">
+  <div class="flex flex-col rounded-lg relative z-20 bg-[#1e2836] w-1/3 p-4 sm:p-6 shadow-md  md:min-w-[500px] sm:min-w-[400px] min-w-[320px]">
+    <label class="text-lg font-bold whitespace-nowrap text-white mb-2" for="search">
       Definitely not what you think...
     </label>
     <input 
       class="rounded-lg bg-black border border-gray-600 hover:border-gray-500 focus:border-[#D0321] focus:outline-none text-white px-4 py-2" 
       type="search" 
       id="search"
-      placeholder="Interested in my blog..."
+      placeholder="Interested in my blog ?"
       bind:value={searchValue}
       on:focus={() => toggleOverlay(true)}
       on:blur={() => toggleOverlay(false)}>

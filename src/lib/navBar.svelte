@@ -2,7 +2,7 @@
   import HamburgerMenu from "./hamburger-menu.svelte";
   import SearchBox from "./searchBox.svelte";
 </script>
-<div class="bg-[#885cd1]">
+<div class="bg-[#885cd1] ">
      <div class="flex justify-between items-center w-full px-4 py-5">
         <img src="/logo.ico" alt="Logo" class="h-16 w-16 md:h-32 md:w-32 lg:h-48 lg:w-48 rounded-full">
 
@@ -12,7 +12,7 @@
             <HamburgerMenu/>
         </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center  pb-3">
         <SearchBox/>
     </div>
           </div>

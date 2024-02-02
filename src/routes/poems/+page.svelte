@@ -4,7 +4,7 @@
 
 </script>
 
-<div class="min-h-screen   bg-gradient-to-b from-[#895cd1] via-[#2b125f] to-[#3f0f4c] ">
+<div class="min-h-screen   bg-gray-900">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-4 lg:gap-8 2xl:px-32 lg:px-8 py-10 sm:px-2 px-4">
         {#each data.poems as {  title, img ,date} }
             <div class="">
@@ -23,7 +23,7 @@
                             <a class="post-author" href="#">
                         <img class="rounded-full" src="/logo.ico" alt="" width="38" height="38" />
                     </a>
-                        <span class="text-xs italic">Soon there will be a NFT </span>
+                        <span class="text-xs italic">Soon there will be an NFT </span>
                     </div>
                 </div>
             </div>

@@ -24,7 +24,6 @@
 
 
              <div class="bg-violet-800 hidden sm:flex rounded shadow-lg hover:bg-violet-700 active:bg-violet-900 transition-all duration-200">
-            <button type="button" on:click={backToTop} class="text-white px-4 py-2 font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Jump Back!</button>
 
     </div>
              <div class="flex items-center space-x-4">

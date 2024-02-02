@@ -2,101 +2,157 @@
   import { getContext } from 'svelte';
   const data = getContext('my-var');
   let searchValue = '';
-  let visiblePosts = [];
-  let isOverlayVisible = false;
+  export let isOverlayVisible = false;
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
-
-    // Format the date and time parts
     const year = date.getFullYear();
     const month = date.getMonth() + 1; // Month is 0-indexed
     const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    // Pad single digit minutes and seconds with a leading zero
     const paddedMonth = month.toString().padStart(2, '0');
     const paddedDay = day.toString().padStart(2, '0');
-    const paddedHours = hours.toString().padStart(2, '0');
+    return `${year}-${paddedMonth}-${paddedDay}`;
+  }
 
-    // Combine the parts into a readable format
-    return `${year}-${paddedMonth}-${paddedDay}  `;
-}
-
-function formatString(str) {
-    let formattedStr = str.replace('.md', '');
-
-    formattedStr = formattedStr.replace(/_/g, ' ');
-
-    formattedStr = formattedStr.split(' ')
-                               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                               .join(' ');
-
-    return formattedStr;
-}
-
-
-
-
+  function formatString(str) {
+    let formattedStr = str.replace('.md', '').replace(/_/g, ' ');
+    return formattedStr.split(' ')
+                       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                       .join(' ');
+  }
 
   $: visiblePosts = searchValue.trim()
-    ? data.filter(post => 
-        post.title.toLowerCase().includes(searchValue.toLowerCase())).slice(0, 3)
+    ? data.filter(post => post.title.toLowerCase().includes(searchValue.toLowerCase())).slice(0, 3)
     : [];
 
-  const toggleOverlay = (visible) => {
-      setTimeout(() => {
-             isOverlayVisible = visible;
+  function clickOutside(node) {
+    const handleClick = event => {
+      if (node && !node.contains(event.target) && !event.defaultPrevented) {
+        node.dispatchEvent(new CustomEvent('click_outside'));
+      }
+    };
 
-      },109)
+    document.addEventListener('click', handleClick, true);
 
+    return {
+      destroy() {
+        document.removeEventListener('click', handleClick, true);
+      }
+    };
+  }
 
-  };
-  const handleLinkClick = () => {
-    searchValue = ''; 
-  };
+  function handleClickOutside(event) {
+    isOverlayVisible = false;
+  }
+
+  function handleLinkClick() {
+    searchValue = '';
+    isOverlayVisible = false;
+  }
+
+  function stopPropagation(event) {
+    event.stopPropagation();
+  }
 </script>
 
+{#if isOverlayVisible}
+  <div 
+    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50" on:click|stopPropagation={stopPropagation}
+  >
+    <div 
+      use:clickOutside 
+      on:click_outside={handleClickOutside}
+      class="search-box w-3/4 sm:w-1/2"
+    >
+      <label for="search" class="flex items-center w-full">
+        <span class="material-symbols-outlined text-[#578aa8]">
+          search
+        </span>
+        <input 
+          class="search-input w-3/4 sm:w-full"
+          type="search" 
+          id="search"
+          placeholder="Search"
+          bind:value={searchValue}
+        />
+      </label>
+    </div>
+    <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
+      {#each visiblePosts as post}
+        <div class="blog-card ">
+          <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
+            <h2 class="blog-title">{formatString(post.title)}</h2>
+          </a>
+          <p class="blog-date">{formatTimestamp(post.date)}</p>
+        </div>
+      {/each}
+    </div>
+  </div>
+  <div class="blurred-overlay bg-gray-800 opacity-80"></div>
+{/if}
+
 <style>
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #334155;
+    border-radius: 8px;
+    max-width: 800px;
+    padding: 16px;
+  }
+
+  .search-input {
+    flex: 1;
+    color: black;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: #334155;
+    border-radius: 8px;
+    
+  }
+
   .search-results {
-    position: absolute;
-    top: 100%; 
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blog-card {
+    border: 2px solid #f53b57;
+    background-color: #111827;
+    padding: 12px;
+    margin-bottom: 8px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .blog-title {
+    color: #f9fafb;
+    margin-bottom: 4px;
+    font-size: 1.25rem;
+  }
+
+  .blog-date {
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }
+
+  .blurred-overlay {
+    position: fixed;
+    top: 0;
     left: 0;
-    z-index: 50;
-    width: 100%; 
+    width: 100%;
+    height: 100%;
+    z-index: 10;
   }
 </style>
-
-<div class="flex flex-col relative sm:pb-4  ">
-  <div class="flex flex-col rounded-lg relative z-20 bg-[#1e2836] w-1/3 p-4 sm:p-6 shadow-md  md:min-w-[500px] sm:min-w-[400px] min-w-[320px]">
-    <label class="text-lg font-bold whitespace-nowrap text-white mb-2" for="search">
-      Definitely not what you think...
-    </label>
-    <input 
-      class="rounded-lg bg-black border border-gray-600 hover:border-gray-500 focus:border-[#D0321] focus:outline-none text-white px-4 py-2" 
-      type="search" 
-      id="search"
-      placeholder="Interested in my blog ?"
-      bind:value={searchValue}
-      on:focus={() => toggleOverlay(true)}
-      on:blur={() => toggleOverlay(false)}>
-  </div>
-
-  {#if isOverlayVisible}
-    <div class="fixed inset-0 bg-black bg-opacity-80"></div>
-
-  <div class="search-results">
-    {#each visiblePosts as post}
-      <div class="border-2   p-2 mb-2 rounded bg-black z-40 border-fuchsia-500">
-        <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
-          <h2 class="text-xl mb-1 text-white">{formatString(post.title)}</h2>
-        </a>
-        <p class="text-gray-400 text-xs">{formatTimestamp(post.date)}</p>
-      </div>
-    {/each}
-  </div>
-  {/if}
-</div>
 

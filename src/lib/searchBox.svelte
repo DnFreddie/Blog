@@ -52,16 +52,18 @@
 
   function stopPropagation(event) {
     event.stopPropagation();
+
   }
+
+
 </script>
 
 {#if isOverlayVisible}
   <div 
-    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50" on:click|stopPropagation={stopPropagation}
+    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50" 
   >
     <div 
       use:clickOutside 
-      on:click_outside={handleClickOutside}
       class="search-box w-3/4 sm:w-1/2"
     >
       <label for="search" class="flex items-center w-full">
@@ -74,17 +76,18 @@
           id="search"
           placeholder="Search"
           bind:value={searchValue}
+          autofocus
         />
       </label>
     </div>
     <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
       {#each visiblePosts as post}
-        <div class="blog-card ">
-          <a href={`/blog/${post.title}`} class="no-underline" on:click={handleLinkClick}>
+          <a href={`/blog/${post.title}`} class="no-underline blog-card" on:click={handleLinkClick}>
+        <div class=" ">
             <h2 class="blog-title">{formatString(post.title)}</h2>
-          </a>
           <p class="blog-date">{formatTimestamp(post.date)}</p>
         </div>
+          </a>
       {/each}
     </div>
   </div>
@@ -104,7 +107,7 @@
 
   .search-input {
     flex: 1;
-    color: black;
+    color: white;
     padding: 12px 16px;
     font-size: 1rem;
     border: none;

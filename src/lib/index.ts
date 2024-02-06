@@ -1,3 +1,4 @@
+import { google } from 'googleapis';
 import * as crypto from 'crypto'
 import {APIKEY,AUTHDOMAIN,DATABASEURL,PROJECTID,STORAGEBUCKET,MESSAGINGSENDERID,APPID} from "$env/static/private"
 import { initializeApp, type FirebaseApp } from "firebase/app";
@@ -5,16 +6,31 @@ import { getFirestore , where,query,collection, addDoc,getDocs } from "firebase/
 import { v4 as uuidv4 } from 'uuid';
 
 
-interface BlogPost{
 
-    content: Blob,
-    uuid:string
-    hash:string,
-    date:string,
-    title:string
 
+
+export async function wrtieSpreadsheet(data, sheetName) {
+	const auth = new google.auth.GoogleAuth({
+		keyFile: './credentials.json',
+		scopes: 'https://www.googleapis.com/auth/spreadsheets'
+	});
+
+	const client = await auth.getClient();
+	const googleSheets = google.sheets({ version: 'v4', auth: client });
+
+	const now = new Date();
+	const dataValues = [...Object.values(data), now];
+
+	await googleSheets.spreadsheets.values.append({
+		auth,
+		spreadsheetId: '1RRaNkHVGccpWXeaRX9IOoajd5UW33E8bnCA2yHyqEoA',
+		range: sheetName,
+		valueInputOption: 'USER_ENTERED',
+		resource: {
+			values: [dataValues]
+		}
+	});
 }
-
 
 
 export async function getColl(app: FirebaseApp, col: string) {

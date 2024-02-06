@@ -44,9 +44,9 @@
 </script>
 
 <div class="bg-gradient-to-b from-[#3f0f4c] via-[#29148a] to-[#1d58a0] ">
-    <div class="flex px-4 pt-28 pr-50 items-center gap-56  justify-end  md:flex-row md:pr-28"> 
+    <div class="flex flex-col-reverse px-4 pt-28 pr-50 items-center gap-32 md:gap-56  justify-end  md:flex-row md:pr-28"> 
 
-        <div class="bg-[#191449] p-4 md:p-14 rounded-lg animate-float md:flex animate-float items-center hidden ">
+        <div class="bg-[#191449] p-10 md:p-14 rounded-lg animate-float md:flex animate-float items-center ">
             <p class="font-bold text-white text-center">At work I utilize Python to modify datasets<br>At home I write scripts to enhance DX</p>
         </div>
 
@@ -71,7 +71,7 @@
                 
         <div class="imgs w-full"> 
             <IntersectionObserver bind:intersecting threshold={0.8}  element={banner}>
-            <img bind:this={banner} src={currentImage} alt="Excel-like table" class={`min-w-[340px] min-h-[400px] md:w-[600px] md:h-[600px]  border-4 border-gray-300 shadow-xl ${fadeClass}`}>
+            <img bind:this={banner} src={currentImage} alt="Excel-like table" class={`min-w-[340px] min-h-[400px] md:w-[600px]   border-4 border-gray-300 shadow-xl ${fadeClass}`}>
             </IntersectionObserver>
         </div>
         </section>

@@ -1,0 +1,141 @@
+<!-- Success Message Component -->
+<script>
+	export let form;
+</script>
+
+<div class="flex text-white bg-black h-full flex-col md:flex-row items-center">
+	<div class="flex flex-grow flex-col space-y-8 ml-12 mt-14">
+		<h3 class="text-3xl font-mono">Any questions or interests?</h3>
+
+		<div class="flex flex-col justify-items-center">
+			<div>
+				<p>Contact me directly</p>
+				<div>
+					<p>defnotfreddie@gmail.com</p>
+				</div>
+			</div>
+		</div>
+			<div class="flex flex-row space-x-6 py-11">
+				<img src="/icons8-github-48.png" alt="Instagram" />
+				<img src="/icons8-linkedin-48.png" alt="Twitter" />
+			</div>
+		</div>
+	</div>
+
+<div class="flex bg-black">
+
+	<div class="container mx-auto my-10 p-6  bg-[#111827] shadow-md rounded">
+		<form class="space-y-3" method="POST" action="?/startNewssletter">
+			<div class=" text-white">
+				<label for="name" class="block text-sm font-medium text-white italic ">Name</label>
+				<input
+					value={form?.data?.name ?? ''}
+					type="text"
+					id="name"
+					name="name"
+					class="mt-1 block w-full border-0  bg-gray-500 border-b border-gray-300 focus:ring-0 focus:border-black"
+				/>
+				{#if form?.errors?.name}
+					<span class="text-red-800">{form.errors.name[0]}</span>
+				{/if}
+			</div>
+
+			<div>
+				<label for="email" class="block text-sm font-medium text-white italic">E-mail</label>
+				<input
+					value={form?.data?.email ?? ''}
+					type="email"
+					id="email"
+					name="email"
+					class="mt-1 block w-full border-0  bg-gray-500 border-b border-gray-300 focus:ring-0 focus:border-black"
+				/>
+				{#if form?.errors?.email}
+					<span class="text-red-800">{form.errors.email[0]}</span>
+				{/if}
+			</div>
+
+			<div>
+				<label for="message" class="block text-sm font-medium text-gray-700">Your message</label>
+				<textarea
+					value={form?.data?.message ?? ''}
+					id="message"
+					name="message"
+					rows="4"
+					class="mt-1 block w-full border-0 border-b bg-gray-500 border-gray-300 focus:ring-0 focus:border-black"
+				></textarea>
+				{#if form?.errors?.message}
+					<span class="text-red-800">{form.errors.message[0]}</span>
+				{/if}
+			</div>
+
+			<div class="flex justify-end">
+				<button
+					type="submit"
+					class="px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+				>
+					Send 
+				</button>
+			</div>
+		</form>
+
+		{#if form?.success}
+			<div class="success-message">
+				<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+					<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+					<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+				</svg>
+				<div class="success-text">Your message has been successfully sent!</div>
+			</div>
+		{/if}
+	</div>
+
+</div>
+<style>
+	.success-message {
+		display: flex;
+		align-items: center;
+		background-color: #e6ffed;
+		border: 1px solid #b6e6bd;
+		border-radius: 5px;
+		padding: 10px 20px;
+		margin-top: 20px;
+	}
+
+	.checkmark {
+		width: 26px;
+		height: 26px;
+		margin-right: 10px;
+	}
+
+	.checkmark__circle {
+		stroke-dasharray: 166;
+		stroke-dashoffset: 166;
+		stroke-width: 2;
+		stroke-miterlimit: 10;
+		stroke: #66bb6a;
+		fill: none;
+		animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+	}
+
+	.checkmark__check {
+		transform-origin: 50% 50%;
+		stroke-dasharray: 48;
+		stroke-dashoffset: 48;
+		stroke-width: 2;
+		stroke: #66bb6a;
+		fill: none;
+		animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.4s forwards;
+	}
+
+	.success-text {
+		color: #3c763d;
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	@keyframes stroke {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+</style>

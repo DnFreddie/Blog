@@ -1,7 +1,7 @@
 <script>
 	export let form;
 </script>
-<div class="flex  bg-[#111827] text-white  flex-col overflow-hidden">
+<div class="flex  min-h-screen bg-[#111827] text-white  flex-col overflow-hidden">
     <div class="flex flex-col flex-grow space-y-8 mt-14 justify-start ml-12">
         <h3 class="md:text-3xl text-2xl font-mono">Any questions or interests?</h3>
         <div class="flex flex-col">

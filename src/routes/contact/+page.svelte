@@ -40,7 +40,7 @@
                 {/if}
             </div>
             <div class="flex justify-end">
-                <button type="submit" class="px-6 py-2 text-sm font-medium text-white bg-black border rounded-md border-transparent hover:bg-gray-800 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 transition disabled:opacity-25">Send</button>
+                <button type="submit" class="px-6 py-2 text-sm font-medium text-white hover:bg-[#f53b57] border rounded-md border-transparent bg-purple-800 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 transition disabled:opacity-25">Send</button>
             </div>
         </form>
         {#if form?.success}

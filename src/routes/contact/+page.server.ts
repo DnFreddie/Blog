@@ -1,20 +1,21 @@
 import { z } from 'zod';
 import { wrtieSpreadsheet } from '$lib';
+
 const newsletterSchema = z.object({
-	name: z
-		.string({ required_error: 'Imię jest wymagane' })
-		.min(1, { message: 'Imię jest wymagane' })
-		.max(64, { message: 'Imię musi być krótsze niż 64 znaki' })
-		.trim(),
-	email: z
-		.string({ required_error: 'Email jest wymagany' })
-		.min(1, { message: 'Email jest wymagany' })
-		.max(64, { message: 'Email musi być krótszy 64 znaki' })
-		.email({ message: 'Email musi być prawidłowy' }),
-	message: z
-		.string({ required_error: 'Wiadomość jest wymagana' })
-		.min(1, { message: 'Wiadomość jest wymagana' })
-		.max(200, { message: 'Wiadomość musi być krótsza niż 200 znaków' })
+    name: z
+        .string({ required_error: 'Name is required' })
+        .min(1, { message: 'Name is required' })
+        .max(64, { message: 'Name must be shorter than 64 characters' })
+        .trim(),
+    email: z
+        .string({ required_error: 'Email is required' })
+        .min(1, { message: 'Email is required' })
+        .max(64, { message: 'Email must be shorter than 64 characters' })
+        .email({ message: 'Email must be valid' }),
+    message: z
+        .string({ required_error: 'Message is required' })
+        .min(1, { message: 'Message is required' })
+        .max(200, { message: 'Message must be shorter than 200 characters' })
 });
 
 export const actions = {

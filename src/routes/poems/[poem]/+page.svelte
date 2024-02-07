@@ -8,7 +8,7 @@ const color3 = gradients[2]
 
 
 </script>
-<div class="flex flex-col md:flex-row items-center justify-center p-4 md:pb-36 pt-10 bg-white shadow-xl   overflow-hidden poemsBack -gradient-to-r  " style="    background: linear-gradient(to right, {color1}, {color2}, {color3});;">
+<div class="flex min-h-screen flex-col md:flex-row items-center justify-center p-4 md:pb-36 pt-10 bg-white shadow-xl   overflow-hidden poemsBack -gradient-to-r  " style="    background: linear-gradient(to right, {color1}, {color2}, {color3});;">
     <img src="{data.img}" class="w-full sm:w-1/2  md:w-1/2 lg:w-1/4 object-cover" alt="Poem Background">
     <div class="w-full md:w-1/2 flex flex-col justify-center items-center space-y-4 p-4">
         <p class="text-2xl font-bold text-white ">

@@ -15,7 +15,7 @@ export const actions ={
             		const data = await request.formData();
                     const email = data.get('email');
                     const password = data.get('password');
-        if (email == LOGIN_MAIL || password == LOGIN_PASSWORD){
+        if (email == LOGIN_MAIL && password == LOGIN_PASSWORD){
         		return { success: true };
         }
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  const data = getContext('my-var');
-  let searchValue = '';
+  import { getContext } from "svelte";
+  const data = getContext("my-var");
+  let searchValue = "";
   export let isOverlayVisible = false;
 
   function formatTimestamp(timestamp) {
@@ -9,35 +9,40 @@
     const year = date.getFullYear();
     const month = date.getMonth() + 1; // Month is 0-indexed
     const day = date.getDate();
-    const paddedMonth = month.toString().padStart(2, '0');
-    const paddedDay = day.toString().padStart(2, '0');
+    const paddedMonth = month.toString().padStart(2, "0");
+    const paddedDay = day.toString().padStart(2, "0");
     return `${year}-${paddedMonth}-${paddedDay}`;
   }
 
   function formatString(str) {
-    let formattedStr = str.replace('.md', '').replace(/_/g, ' ');
-    return formattedStr.split(' ')
-                       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                       .join(' ');
+    let formattedStr = str.replace(".md", "").replace(/_/g, " ");
+    return formattedStr
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   $: visiblePosts = searchValue.trim()
-    ? data.filter(post => post.title.toLowerCase().includes(searchValue.toLowerCase())).slice(0, 3)
+    ? data
+        .filter((post) =>
+          post.title.toLowerCase().includes(searchValue.toLowerCase()),
+        )
+        .slice(0, 3)
     : [];
 
   function clickOutside(node) {
-    const handleClick = event => {
+    const handleClick = (event) => {
       if (node && !node.contains(event.target) && !event.defaultPrevented) {
-        node.dispatchEvent(new CustomEvent('click_outside'));
+        node.dispatchEvent(new CustomEvent("click_outside"));
       }
     };
 
-    document.addEventListener('click', handleClick, true);
+    document.addEventListener("click", handleClick, true);
 
     return {
       destroy() {
-        document.removeEventListener('click', handleClick, true);
-      }
+        document.removeEventListener("click", handleClick, true);
+      },
     };
   }
 
@@ -46,33 +51,25 @@
   }
 
   function handleLinkClick() {
-    searchValue = '';
+    searchValue = "";
     isOverlayVisible = false;
   }
 
   function stopPropagation(event) {
     event.stopPropagation();
-
   }
-
-
 </script>
 
 {#if isOverlayVisible}
-  <div 
-    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50" 
+  <div
+    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50"
   >
-    <div 
-      use:clickOutside 
-      class="search-box w-3/4 sm:w-1/2"
-    >
+    <div use:clickOutside class="search-box w-3/4 sm:w-1/2">
       <label for="search" class="flex items-center w-full">
-        <span class="material-symbols-outlined text-[#578aa8]">
-          search
-        </span>
-        <input 
+        <span class="material-symbols-outlined text-[#578aa8]"> search </span>
+        <input
           class="search-input w-3/4 sm:w-full"
-          type="search" 
+          type="search"
           id="search"
           placeholder="Search"
           bind:value={searchValue}
@@ -82,12 +79,16 @@
     </div>
     <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
       {#each visiblePosts as post}
-          <a href={`/blog/${post.title}`} class="no-underline blog-card" on:click={handleLinkClick}>
-        <div class=" ">
+        <a
+          href={`/blog/${post.title}`}
+          class="no-underline blog-card"
+          on:click={handleLinkClick}
+        >
+          <div class=" ">
             <h2 class="blog-title">{formatString(post.title)}</h2>
-          <p class="blog-date">{formatTimestamp(post.date)}</p>
-        </div>
-          </a>
+            <p class="blog-date">{formatTimestamp(post.date)}</p>
+          </div>
+        </a>
       {/each}
     </div>
   </div>
@@ -114,7 +115,6 @@
     outline: none;
     background-color: #334155;
     border-radius: 8px;
-    
   }
 
   .search-results {
@@ -158,4 +158,3 @@
     z-index: 10;
   }
 </style>
-

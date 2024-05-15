@@ -58,7 +58,9 @@
             </a>
   {#each menuItems as item}
             <a href="/{item}" class="lg:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
-                {$page.url.pathname === '/' + item ? 'border-b-4 border-[#f53b57]' : ''}">
+  { $page.url.pathname.includes(item) ? 'border-b-4 border-[#f53b57]' : '' }">
+
+
                 {item.charAt(0).toUpperCase() + item.slice(1)}
                     
             </a>

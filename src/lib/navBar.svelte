@@ -78,7 +78,7 @@
             <button class="flex-grow text-left ml-2">Home</button>
         </a>
         {#each menuItems as item, index}
-            <a href="/{item}" class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname === '/' + item ? 'border-y-2  border-red-500 bg-[#331233]' : ''}`}>
+            <a href="/{item}" class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname.includes(item)? 'border-y-2  border-red-500 bg-[#331233]' : ''}`}>
                 <span class="material-symbols-outlined">{menuIcons[index]}</span>
                 <button class="flex-grow text-left ml-2">{item.charAt(0).toUpperCase() + item.slice(1)}</button>
             </a>

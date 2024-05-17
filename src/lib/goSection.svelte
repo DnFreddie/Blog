@@ -17,8 +17,11 @@ I'm utilizing containers for testing purposes and as small, easy VMs that I can 
     <div class="flex flex-row justify-center  ">
 <img src="/git_hub.png" class=" xl:w-[60%] 2xl:w-1/2 xl:block hidden" alt="github logo">
             <div class="flex justify-center">
+                <div class="flex justify-center items-center sm:px-0 pl-10 mr-5  px-4">
+
 
 <DescriptionSection h="Nice and simple" body={description} img="golan_docker.png"/>
+                </div>
             </div>
     </div>
     </div>

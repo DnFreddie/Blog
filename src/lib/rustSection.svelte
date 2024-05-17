@@ -8,7 +8,7 @@ const description=`I have some knowledge of JavaScript, although not as much as 
         <div class="flex justify-center items-center"> 
             <AnimatedProjects/>
         </div>
-        <div class="flex justify-center items-center"> 
+        <div class="flex justify-center pl-10 mr-5 items-center"> 
             <DescriptionSection img="svelte_logo.png" h="A bit about web projects" body={description}/>
         </div>
     </div>

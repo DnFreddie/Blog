@@ -3,7 +3,7 @@
     <div class=" bg-[#006CFE] flex flex-col py-5 rounded-e">
       <div class="flex pt-2 justify-center px-4 flex-row items-center">
         <p class="  text-white sm:w-3/4 font-mainFont break-words text-2xl">
-          It was with whoam i statred my programing journey
+                    It was with who I started my programming journey
         </p>
       </div>
     </div>

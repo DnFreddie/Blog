@@ -13,31 +13,30 @@
     <table class="text-white w-full text-2xl z-3">
       <tr>
         <td class="w-8">1</td>
-        <td><code class="text-green-400">const xd = "5"</code></td>
+        <td><code class="text-green-400">import pandas as pd</code></td>
       </tr>
-      <!-- Repeat the structure for rows 2 to 7 -->
       <tr>
         <td class="w-8">2</td>
-        <td> Lol = xd</td>
+        <td> const CSV = "./data.csv" </td>
       </tr>
       <tr>
         <td class="w-8">3</td>
-        <td> for i in range xd: xd = 9 + i</td>
+        <td> df = pd.read_csv(CSV)</td>
       </tr>
       <tr>
         <td class="w-8">4</td>
-        <td> for i in range xd: xd = 9 + i </td>
+        <td> print(df.describe()) </td>
       </tr>
       <tr>
         <td class="w-8">5</td>
-        <td> a + b = c + d </td>
+        <td> filtered_df = df[df['column_name'] > condition] </td>
       </tr>
       <tr>
         <td class="w-8">6</td>
-        <td> @sadhjsh</td>
+        <td> grouped_df = df.groupby('group_column')</td>
       </tr><tr>
         <td class="w-8">7</td>
-        <td></td>
+        <td>grouped_df = df.groupby('atribiutes').agg(agg_func)</td>
       </tr>
     </table>
 

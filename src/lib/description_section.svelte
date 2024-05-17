@@ -5,12 +5,12 @@
 websites.
 Mostly to gather data via scraping or cleaning product
 information with the Pandas library. \n Implemented a couple of parsers
-but nothing muchUsually use Python modules for fast remote
+but nothing much. Usually use Python modules for fast remote
               connections, reverse shell, and etc. I'm familiar with the syntax
               and some useful tools.`;
 </script>
 
-<div class="flex flex-col text-white mx-2 md:w-1/2 sm:w-full">
+<div class="flex flex-col text-white mx-2 md:w-3/4 lg:w-[60%] sm:w-full">
   <div class="flex xl:justify-end">
     <img src="/{img}" class="w-[40%] rounded-full bg-transparent" alt="" />
   </div>
@@ -19,7 +19,7 @@ but nothing muchUsually use Python modules for fast remote
       {h}
     </h2>
     <p
-      class="font-mainFont text-sm md:text-lg md:w-full lg:text-2xl tex-xl sm:w-full w-[90%] whitespace-normal"
+      class="font-mainFont  md:text-lg md:w-full lg:text-2xl text-md  sm:w-full w-[90%] whitespace-normal"
     >
       {body}
     </p>

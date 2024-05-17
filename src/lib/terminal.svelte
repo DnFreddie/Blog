@@ -1,8 +1,6 @@
 <script lang="ts">
   import Typewriter from "svelte-typewriter";
   import { onMount } from "svelte";
-  let xd = `who am i to judge/\ls help me 
-i dont noi`;
 
   let currentDateTime = new Date();
 
@@ -40,36 +38,34 @@ i dont noi`;
   }
 </script>
 
-o
 
-<div class="flex px-6 mt-10 jetbrains-mono text-2xl">
+<div class="flex px-1  my-10 jetbrains-mono md:text-xl text-xs  xl:text-2xl justify-center ">
   <div class="flex flex-col items-center md:flex-row space-x-0 md:space-x-6">
     <div class="flex flex-col">
       <div
         class="w-full bg-gray-800 flex rounded-t-sm justify-between items-center px-6 py-2"
       >
         <div class="flex flex-row space-x-4">
-          <div class="w-6 h-6 bg-red-500 rounded-full"></div>
-          <div class="w-6 h-6 bg-yellow-400 rounded-full"></div>
-          <div class="w-6 h-6 bg-green-500 rounded-full"></div>
+          <div class="md:w-6 h-4 w-4 md:h-6 bg-red-500 rounded-full"></div>
+          <div class="md:w-6 md:h-6 h-4 w-4 bg-yellow-400 rounded-full"></div>
+          <div class="md:w-6 md:h-6 h-4 w-4 bg-green-500 rounded-full"></div>
         </div>
         <img
           src="nixso-logo.png"
-          alt=""
+          alt="nixos spinning logo"
           class="max-w-[10%] spin bg-transparent rounded-full"
         />
       </div>
       <div
         class="bg-black border flex-col justify-between border-gray-500 flex rounded-b-lg w-full shadow-2xl"
       >
-        <div class="bg-black flex pb-80 flex-col">
-          <div class="flex flex-col mt-1 mx-2">
+        <div class="bg-black flex md:pb-80 pb-40 flex-col">
+          <div class="flex flex-col mt-2 mx-2">
             <div class="flex flex-row">
               <p class="text-white">dnf</p>
               <p class="text-violet-500">[</p>
               <p class="text-[#78DDE9]">~/Env/Blog</p>
               <p class="text-violet-500">]</p>
-              #
               <p class="text-violet-500">(dev)</p>
             </div>
             <div class="flex-row flex">
@@ -85,15 +81,15 @@ o
                 interval={50}
               >
                 <p class=" absolute text-white whitespace-break-spaces">
-                  {xd}
+                                    tmux my only window manager 
                 </p>
-                <p class="text-white">does it work djsklkskjjs</p>
-                <p class="text-white">does it work djsklkskjjs</p>
+                <p class="text-white">#vimuser </p>
+                <p class="text-white">{"bash- better zsh "} </p>
               </Typewriter>
             </div>
           </div>
         </div>
-        <div class="flex bg-[#90A858] text-lg flex-row justify-between px-4">
+        <div class="flex bg-[#90A858] md:text-lg sm:text-sm text-xs flex-row justify-between px-4">
           <p class=" ">0:bash*</p>
           <p class=" ">"dnf@nixos:~" {getCustomDateFormat(currentDateTime)}</p>
         </div>

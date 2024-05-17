@@ -1,25 +1,25 @@
 <script lang="ts">
   import Drive from "./drive.svelte";
+  import DescriptionSection from "./description_section.svelte";
 </script>
 
 <div
   class="flex flex-col bg-gradient-to-b from-[#1d58a0] via-[#2692ab] to-[#2d8b8e]"
 >
+    <div class="flex flex-col mb-28">
+
   <Drive />
-  <div class="flex-grow flex flex-col md:flex-row-reverse md:mx-60">
-    <div class="flex justify-center items-center flex-col flex-grow px-7 pb-20">
-      <div
-        class="golangBanner bg-[#177578] sm:p-16 md:p-16 p-6 px-7 rounded-lg flex items-center justify-center"
-      >
-        <p class="font-bold text-white text-center text-lg">
-          I've been learning GoLang and Podman<br />
-          I'm looking for opportunities to work in cloud.
-        </p>
-      </div>
+  <div class="flex flex-row  justify-center items-center">
     </div>
-    <img src="AwsPodman.png" alt="AwsCloud" class="md:w-[600px] md:h-[400px]" />
+    <div class="flex flex-row justify-center  ">
+<img src="/git_hub.png" class=" xl:w-[60%] 2xl:w-1/2 xl:block hidden" alt="">
+            <div class="flex justify-center">
+
+<DescriptionSection img="golan_docker.png"/>
+            </div>
+    </div>
+    </div>
   </div>
-</div>
 
 <style>
   @keyframes floatAnimation {
@@ -32,7 +32,4 @@
     }
   }
 
-  .golangBanner {
-    animation: floatAnimation 3s ease-in-out infinite;
-  }
 </style>

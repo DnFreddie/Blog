@@ -4,14 +4,13 @@
 </script>
 
 <div
-  class="bg-gradient-to-b from-[#3f0f4c] via-[#29148a] to-[#1d58a0] flex py-48"
+  class=" bg-gradient-to-b from-[#3f0f4c] via-[#29148a] to-[#1d58a0] overflow-clip flex py-48"
 >
-  <div class="flex mt-24 mx-16">
-    <div class="flex justify-center sm:space-x-36 xl:flex-row flex-col">
-      <div class="flex xl:w-1/2 mx-2 sm:mx-16 mx- xl:mx-0">
+<div class="flex xl:flex-row flex-col xl:px-8  xl:space-x-20 justify-center px-2">
+
         <CodeEditor />
-      </div>
+
+
       <DescriptionSection />
     </div>
-  </div>
 </div>

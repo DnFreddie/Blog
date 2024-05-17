@@ -1,4 +1,4 @@
-<div class="container z-10">
+<div class="container z-10 ">
   <div class="flex flex-col w-full 2xl:w-3/4 shadow-2xl shadow-black">
     <div class=" bg-[#006CFE] flex flex-col py-5 rounded-e">
       <div class="flex pt-2 justify-center px-4 flex-row items-center">

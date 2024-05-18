@@ -34,7 +34,7 @@
         class="inline-block p-0"
       >
         <img
-          src="/icons8-linkedin-48.png"
+          src="/icons8-linkedin-64.png"
           class="social-logo m-auto"
           loading="lazy"
           alt="LinkedIn"
@@ -46,7 +46,7 @@
         class="inline-block p-0"
       >
         <img
-          src="/icons8-github-48.png"
+          src="/icons8-github-64.png"
           class="social-logo m-auto"
           loading="lazy"
           alt="GitHub"

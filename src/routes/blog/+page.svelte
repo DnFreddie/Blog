@@ -5,30 +5,20 @@
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
 
-    // Format the date and time parts
     const year = date.getFullYear();
-    const month = date.getMonth() + 1; // Month is 0-indexed
+    const month = date.getMonth() + 1; 
     const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
 
-    // Pad single digit minutes and seconds with a leading zero
     const paddedMonth = month.toString().padStart(2, "0");
     const paddedDay = day.toString().padStart(2, "0");
-    const paddedHours = hours.toString().padStart(2, "0");
 
-    // Combine the parts into a readable format
-    return `${year}-${paddedMonth}-${paddedDay}  `;
+    return `${paddedDay}.${paddedMonth}.${year}  `;
   }
   function formatString(str) {
-    // Remove the file extension
     let formattedStr = str.replace(".md", "");
 
-    // Replace underscores with spaces
     formattedStr = formattedStr.replace(/_/g, " ");
 
-    // Capitalize the first letter of each word
     formattedStr = formattedStr
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -38,48 +28,41 @@
   }
   const data = getContext("my-var");
 
-  data.sort((a, b) => {
+    data.sort((a, b) => {
     return b.date.localeCompare(a.date);
   });
-
-  function copyHash(hash: string) {
-    navigator.clipboard.writeText(hash);
-  }
 </script>
 
-<div
-  class="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#885cd1] via-black to-[#002a41]"
->
-  <section class="w-full max-w-md p-4">
-    {#each data as post}
-      <div
-        class="break-words text-white mb-4 bg-black shadow rounded p-4 post-box"
-      >
-        <div class="flex justify-between">
-          <a
-            href={`/blog/${post.title}`}
-            class="text-xl font-semibold hover:underline"
-          >
-            <h2>{formatString(post.title)}</h2>
-          </a>
 
-          <div class=" flex sm:bg-none p-1 bg-gray-800 rounded-lg">
-            <button
-              type="button"
-              class="hover:bg-gray-200 c rounded-lg"
-              on:click|stopPropagation={() => copyHash(post.hash)}
-            >
-              <span class=" material-symbols-outlined">tag</span>
-            </button>
+<div class="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#885cd1] via-black to-[#002a41] p-6">
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 gap-2 ">
+      {#each data as post}
+        <a href={`/blog/${post.title}`}>
+          <div class="p-4 flex flex-row justify-between text-white postAnime post-box space-x-6">
+            <div class="flex-col flex">
+              <h2 class="text-xl font-semibold mb-2">{formatString(post.title)}</h2>
+              <p class="text-gray-400 text-sm mb-2"> {formatTimestamp(post.date)}</p>
+              <p class="text-gray-300 hidden lg:block  italic">{post.short_desc}  </p>
+            </div>
+            <img src={post.cover_img} alt="" class="rounded max-w-[100px]">
           </div>
-        </div>
-        <p class="text-gray-600 text-sm">{formatTimestamp(post.date)}</p>
-      </div>
-    {/each}
-  </section>
+        </a>
+      {/each}
+    </div>
+  </div>
 </div>
 
+
 <style>
+.postAnime {
+    transition: transform 0.3s ease;
+}
+
+.postAnime:hover {
+    transform: scale(1.02);
+}
+
   .post-box {
     border-radius: 20px;
     background: #f0f0f0;
@@ -90,7 +73,7 @@
 
   @keyframes anime {
     0% {
-      width: 20%;
+      width: 100%;
       height: 40px;
       background: black;
       box-shadow: 5px 5px 10px grey;

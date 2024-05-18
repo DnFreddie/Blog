@@ -16,7 +16,7 @@
       <div class="flex flex-col items-start space-y-2">
         <span class="font-bold text-white">DefnotFreddie</span>
         <a
-          href="mailto:defnotfreddie@proton.me"
+          href="mailto:defnotfreddie@gmail.com"
           class="hover:text-violet-500 transition duration-300"
         >
           <span class="text-gray-400">defnotfreddie@proton.me</span>

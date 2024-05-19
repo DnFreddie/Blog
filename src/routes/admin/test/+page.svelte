@@ -22,9 +22,9 @@
 <div class="flex md:text-xl max-w-[1000px] text-white mx-2   text-xs text flex-col">
 
             <h1 class="text-4xl font-bold whitespace-normal py-4  text-[#b4befe] poemsBack">
-                {formatString(data.title)}
+                {formatString("The_gold_is_in_the_block")}
             </h1>
-    {@html data.content}
+    {@html data.mRender}
     </div>
 
 </div>

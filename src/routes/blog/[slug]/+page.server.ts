@@ -1,5 +1,5 @@
 import { initDb, getItem } from "$lib";
-import { santeizeM } from "$lib/mdRender";
+import { renderMarkdown} from "$lib/mdRender";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
@@ -13,14 +13,14 @@ export async function load({ params }) {
     }
 
     const url = collList[0];
-    const request = await fetch(url.contentURL);
+    const request = await fetch(url.body);
 
     if (!request.ok) {
       throw new Error("Failed to fetch content");
     }
 
     const blob = await request.text();
-    const toRender = santeizeM(blob);
+    const toRender = renderMarkdown(blob);
 
     return {
       content: toRender,

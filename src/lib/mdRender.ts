@@ -34,7 +34,7 @@ export function renderMarkdown(mdString: string)  {
       return `<del>${text}</del>`;
     },
     link(href, title, text) {
-      return `<a class="text-[#94e2d5] hover:underline" href="${href}" title="${title}">${text}</a>`;
+      return `<a  target="_blank" rel="noopener noreferrer"      class="text-[#94e2d5] hover:underline" href="${href}" title="${title}">${text}       </a>`;
     },
     text(text) {
 

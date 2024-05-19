@@ -65,7 +65,7 @@
       href="/"
       class="lg:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
                 {$page.url.pathname === '/'
-        ? 'border-b-4 border-[#f53b57]'
+        ? 'border-b-4 border-[#FCE8AE]'
         : ''}"
     >
       Home
@@ -74,7 +74,7 @@
       <a
         href="/{item}"
         class="lg:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
-  {$page.url.pathname.includes(item) ? 'border-b-4 border-[#f53b57]' : ''}"
+  {$page.url.pathname.includes(item) ? 'border-b-4 border-[#FCE8AE]' : ''}"
       >
         {item.charAt(0).toUpperCase() + item.slice(1)}
       </a>
@@ -95,7 +95,7 @@
     <img src="/newLogo.png" alt="" />
     <a
       href="/"
-      class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname === "/" ? "border-y-2  border-red-500 bg-[#331233]" : ""}`}
+      class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname === "/" ? "border-y-2  border-[#FCE8AE] bg-black" : ""}`}
     >
       <span class="material-symbols-outlined">home</span>
       <button class="flex-grow text-left ml-2">Home</button>
@@ -103,7 +103,7 @@
     {#each menuItems as item, index}
       <a
         href="/{item}"
-        class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname.includes(item) ? "border-y-2  border-red-500 bg-[#331233]" : ""}`}
+        class={`flex items-center w-full text-white py-2 px-3 ${$page.url.pathname.includes(item) ? "border-y-2  border-[#FCE8AE] bg-black" : ""}`}
       >
         <span class="material-symbols-outlined">{menuIcons[index]}</span>
         <button class="flex-grow text-left ml-2"

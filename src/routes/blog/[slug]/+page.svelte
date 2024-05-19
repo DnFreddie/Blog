@@ -1,10 +1,16 @@
 <script lang="ts">
-  export let data 
+import {getScrollPercentage} from "$lib/utils"
+function scrollHandler() {
+    let scrollPercentage = getScrollPercentage();
+    if (scrollPercentage >= 4) {
+        scrolled = true;
+    } else {
+        scrolled = false;
+    }
+}
   function formatString(str: string) {
     let formattedStr = str.replace(".md", "");
-
     formattedStr = formattedStr.replace(/_/g, " ");
-
     formattedStr = formattedStr
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -13,10 +19,14 @@
     return formattedStr;
   }
 
+let scrolled = false;
+  export let data 
+
 </script>
 
 
-<div class="niceone flex  bg-[#201C2C] justify-center w-full h-full ">
+<svelte:window on:scroll={scrollHandler} />
+<div class="niceone flex  justify-center w-full h-full  {scrolled ? 'bg-black' : 'bg-[#201C2C]'} ">
     <div class="flex my-12  ">
 
 <div class="flex md:text-xl max-w-[1000px] text-white mx-2   text-xs text flex-col">
@@ -34,7 +44,8 @@
 <style>
 .niceone {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        font-family: "Quicksand", sans-serif;
+    font-family: "Quicksand", sans-serif;
+    transition: background-color 0.8s ease; 
 
 }
 

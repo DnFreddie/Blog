@@ -19,7 +19,7 @@
           href="mailto:defnotfreddie@gmail.com"
           class="hover:text-violet-500 transition duration-300"
         >
-          <span class="text-gray-400">defnotfreddie@proton.me</span>
+          <span class="text-gray-400">defnotfreddie@gmail.com</span>
         </a>
       </div>
     </div>

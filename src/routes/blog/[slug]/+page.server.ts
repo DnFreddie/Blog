@@ -1,5 +1,4 @@
 import { initDb, getItem } from "$lib";
-import { renderMarkdown} from "$lib/mdRender";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
@@ -19,11 +18,10 @@ export async function load({ params }) {
       throw new Error("Failed to fetch content");
     }
 
-    const blob = await request.text();
-    const toRender = renderMarkdown(blob);
+    const blob = await  request.text();
 
     return {
-      content: toRender,
+      content: blob,
       title: slug,
     };
   } catch (e) {

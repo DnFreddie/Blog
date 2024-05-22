@@ -1,5 +1,6 @@
 <script lang="ts">
 import {getScrollPercentage} from "$lib/utils"
+import { renderMarkdown} from "$lib/mdRender";
 function scrollHandler() {
     let scrollPercentage = getScrollPercentage();
     if (scrollPercentage >= 4) {
@@ -33,8 +34,8 @@ let scrolled = false;
 
             <h1 class="text-4xl font-bold whitespace-normal py-4  text-[#b4befe] poemsBack">
                 {formatString(data.title)}
-            </h1>
-    {@html data.content}
+                      </h1>
+                {@html renderMarkdown(data.content)}
     </div>
 
 </div>

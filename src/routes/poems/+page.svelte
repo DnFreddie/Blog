@@ -22,7 +22,6 @@
             </a>
           </div>
           <div class="text-white flex-row flex items-center space-x-2">
-            <a class="post-author" href="#">
               <img
                 class="rounded-full"
                 src="/logo.ico"
@@ -30,7 +29,6 @@
                 width="38"
                 height="38"
               />
-            </a>
             <span class="text-xs italic">Soon there will be an NFT </span>
           </div>
         </div>

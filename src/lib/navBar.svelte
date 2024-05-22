@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from "$app/stores";
-  import HamburgerMenu from "./hamburger-menu.svelte";
   import SearchBox from "./searchBox.svelte";
   let menu;
   let showMenu = false;
@@ -9,11 +8,6 @@
   const menuIcons = ["file_open", "book", "mail"];
   function toggleMenu() {
     showMenu = !showMenu;
-    manageClickOutside();
-  }
-
-  function toggleSearch() {
-    isClicker = !isClicker;
     manageClickOutside();
   }
 
@@ -49,17 +43,9 @@
       </p>
     </a>
   </div>
-
-  <div class="flex-1 justify-center flex">
-    <button
-      on:click|stopPropagation={toggleSearch}
-      class="search-box bg-[#182233] border border-gray-300 rounded-2xl w-[300px] sm:w-[400px] py-2 flex items-center justify-start space-x-2"
-    >
-      <span class="material-symbols-outlined text-white"> search </span>
-      <p class="text-gray-300">Search</p>
-    </button>
-  </div>
-
+<!--This is a comment. Comments are not displayed in the browser-->
+<SearchBox/>
+<!--This is a comment. Comments are not displayed in the browser-->
   <div class="flex-1 flex justify-end space-x-3 mr-4 navbar">
     <a
       href="/"
@@ -113,9 +99,6 @@
     {/each}
   </div>
 </div>
-{#if isClicker}
-  <SearchBox isOverlayVisible={true} />
-{/if}
 
 <style>
   .search-box {
@@ -125,7 +108,7 @@
     padding: 10px 15px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 10px;
     cursor: pointer;
   }

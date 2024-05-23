@@ -20,6 +20,8 @@ let scrolled = false;
     <div class="flex my-12">
         <div class="flex md:text-xl max-w-[1000px] text-white mx-2 text-xs text flex-col">
             <h1 class="text-4xl font-bold whitespace-normal py-4 text-[#b4befe] poemsBack">
+                 Don't break easy, Preserve best version of your sytsem
+
             </h1>
             {@html data.mRender}
         </div>

@@ -1,30 +1,37 @@
-import { initDb, getItem } from "$lib";
-import { error } from "@sveltejs/kit";
-
+import { error } from '@sveltejs/kit';
+import { initDb,getItem } from '$lib';
+import { resolve } from 'path';
 export async function load({ params }) {
   try {
     const app = initDb();
     const slug = params.slug;
-    const collList = await getItem(app, slug, "blogPosts", "title");
-
+ let item =    getItem(app, slug, "blogPosts", "title")
+  .then(collList => {
     if (!collList || collList.length === 0) {
-      throw error(404, "Blog Post does not exist");
+      throw new Error("Blog Post does not exist");
     }
 
     const url = collList[0];
-    const request = await fetch(url.body);
-
+    return fetch(url.body);
+  })
+  .then(request => {
     if (!request.ok) {
       throw new Error("Failed to fetch content");
     }
 
-    const blob = await request.text();
-
+    return request.text();
+  })
+  .catch(error => {
+                console.log(error)
+  });
     return {
-      content: blob,
-      title: slug,
+      p: {
+        title: slug,
+        content: item
+      }
     };
   } catch (e) {
-    throw error(404, { message: "Blog Post does not Exits" });
+    throw error(404, { message: 'Blog Post does not exist' });
   }
 }
+

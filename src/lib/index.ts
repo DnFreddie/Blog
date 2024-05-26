@@ -132,6 +132,8 @@ export async function getItem(
   col: string,
   id: string,
 ) {
+
+
   const db = getFirestore(app);
   const blogsCollection = collection(db, col);
   const q = query(blogsCollection, where(id, "==", param));

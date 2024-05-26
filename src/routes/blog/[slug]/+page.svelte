@@ -1,4 +1,5 @@
 <script lang="ts">
+import WaitScreen from "$lib/utils/wait_screen.svelte";
   import { getScrollPercentage } from "$lib/utils";
   import { renderMarkdown } from "$lib/mdRender";
   function scrollHandler() {
@@ -26,10 +27,7 @@
 
 <svelte:window on:scroll={scrollHandler} />
 <div
-  class="niceone flex justify-center w-full h-full {scrolled
-    ? 'bg-black'
-    : 'bg-[#201C2C]'} "
->
+  class="niceone flex justify-center min-h-screen  w-full h-full {scrolled? 'bg-black': 'bg-[#201C2C]'} ">
   <div class="flex my-12">
     <div
       class="flex md:text-xl max-w-[1000px] text-white mx-2 text-xs text flex-col"
@@ -37,13 +35,22 @@
       <h1
         class="text-4xl font-bold whitespace-normal py-4 text-[#b4befe] poemsBack"
       >
-        {formatString(data.title)}
+        {formatString(data.p.title)}
       </h1>
-      {@html renderMarkdown(data.content)}
+          {#await data.p.content}
+
+                <WaitScreen/>
+
+        {:then blob}
+          {@html renderMarkdown(blob)}
+         {:catch error}
+          <p>Error: {error.message}</p>
+        {/await}
+
+
     </div>
   </div>
 </div>
-
 <style>
   .niceone {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

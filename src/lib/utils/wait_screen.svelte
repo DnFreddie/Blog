@@ -1,4 +1,4 @@
-<div id="load" class="md:text-4xl">
+<div id="load" class="md:text-4xl md:max-w-[600px] max-w-[300px] ">
   <div>G</div>
   <div>N</div>
   <div>I</div>

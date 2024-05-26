@@ -1,12 +1,16 @@
 <script lang="ts">
+import WaitScreen from '$lib/utils/wait_screen.svelte';
   export let data;
 </script>
 
 <div class="min-h-screen bg-gray-900">
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-4 lg:gap-8 2xl:px-32 lg:px-8 py-10 sm:px-2 px-4"
-  >
-    {#each data.poems as { title, img, date }}
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-4 lg:gap-8 2xl:px-32 lg:px-8 py-10 sm:px-2 px-4">
+     {#await data.poems.item}
+<WaitScreen/>
+
+                {:then item}
+    {#each item as { title, img, date }}
       <div class="">
         <div class=" p-4 bg-transparent rounded-lg">
           <a href="/poems/{title}">
@@ -34,6 +38,8 @@
         </div>
       </div>
     {/each}
+            {/await}
+
   </div>
 </div>
 

@@ -38,8 +38,9 @@
   }
 </script>
 
-
-<div class="flex px-1  my-10 jetbrains-mono md:text-xl text-xs  xl:text-2xl justify-center ">
+<div
+  class="flex px-1 my-10 jetbrains-mono md:text-xl text-xs xl:text-2xl justify-center"
+>
   <div class="flex flex-col items-center md:flex-row space-x-0 md:space-x-6">
     <div class="flex flex-col">
       <div
@@ -81,15 +82,17 @@
                 interval={50}
               >
                 <p class=" absolute text-white whitespace-break-spaces">
-                                    tmux my only window manager 
+                  tmux my only window manager
                 </p>
-                <p class="text-white">#vimuser </p>
-                <p class="text-white">{"bash- better zsh "} </p>
+                <p class="text-white">#vimuser</p>
+                <p class="text-white">{"bash- better zsh "}</p>
               </Typewriter>
             </div>
           </div>
         </div>
-        <div class="flex bg-[#90A858] md:text-lg sm:text-sm text-xs flex-row justify-between px-4">
+        <div
+          class="flex bg-[#90A858] md:text-lg sm:text-sm text-xs flex-row justify-between px-4"
+        >
           <p class=" ">0:bash*</p>
           <p class=" ">"dnf@nixos:~" {getCustomDateFormat(currentDateTime)}</p>
         </div>

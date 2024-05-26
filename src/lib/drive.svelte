@@ -1,5 +1,5 @@
 <script lang="ts">
-//TODO! fix the annaimation on the banner
+  //TODO! fix the annaimation on the banner
   import IntersectionObserver from "svelte-intersection-observer";
   let text = " My virtualazaiton stack.";
   let banner: HTMLElement;
@@ -16,7 +16,7 @@
         <div
           class="flex items-center flex-col sm:flex-row space-y-10 sm:space-y-0"
         >
-          <p class="lg:text-6xl  text-4xl font-bold font-mainFont">{text}</p>
+          <p class="lg:text-6xl text-4xl font-bold font-mainFont">{text}</p>
           <img
             src="golang_official_logo_icon_169092.png"
             alt="GoLang Logo"

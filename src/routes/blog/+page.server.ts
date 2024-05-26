@@ -1,14 +1,12 @@
-import { initDb,getColl } from "$lib";
+import { initDb, getColl } from "$lib";
 
- 
 export async function load() {
-    const app = initDb();
-    const data =  getColl(app, "blogPosts");
+  const app = initDb();
+  const data = getColl(app, "blogPosts");
 
-    return {
-        posts: {
-            item: data
-
-        }
-      }
-    };
+  return {
+    posts: {
+      item: data,
+    },
+  };
+}

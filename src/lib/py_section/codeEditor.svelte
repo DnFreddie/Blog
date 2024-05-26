@@ -2,13 +2,15 @@
   import CoverEditor from "./coverEditor.svelte";
 </script>
 
-<div class="  sm:w-[85%] bg-gray-900 border-2 border-gray-500 rounded sm:p-4 lg:w-[50%] mx-2">
-  <div class="flex flex-col z-10 justify-between mt-11 sm:mx-8 ">
-        <div class="inline  md:w-[50%] sm:mt-0 sm:mr-0  mt-10 mr-4 absolute lg:w-[45%] lg:mt-8 md:ml-24 xl:w-[35%] z-4">
-
-    <CoverEditor />
-        </div>
-
+<div
+  class="  sm:w-[85%] bg-gray-900 border-2 border-gray-500 rounded sm:p-4 lg:w-[50%] mx-2"
+>
+  <div class="flex flex-col z-10 justify-between mt-11 sm:mx-8">
+    <div
+      class="inline md:w-[50%] sm:mt-0 sm:mr-0 mt-10 mr-4 absolute lg:w-[45%] lg:mt-8 md:ml-24 xl:w-[35%] z-4"
+    >
+      <CoverEditor />
+    </div>
 
     <table class="text-white w-full sm:text-2xl z-3">
       <tr>

@@ -43,9 +43,9 @@
       </p>
     </a>
   </div>
-<!--This is a comment. Comments are not displayed in the browser-->
-<SearchBox/>
-<!--This is a comment. Comments are not displayed in the browser-->
+  <!--This is a comment. Comments are not displayed in the browser-->
+  <SearchBox />
+  <!--This is a comment. Comments are not displayed in the browser-->
   <div class="flex-1 flex justify-end space-x-3 mr-4 navbar">
     <a
       href="/"

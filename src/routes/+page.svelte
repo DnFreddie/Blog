@@ -5,7 +5,6 @@
   import PSection from "$lib/pSection.svelte";
 </script>
 
-
 <Linux />
 <PSection />
 <GoSection />

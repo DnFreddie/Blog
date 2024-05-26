@@ -19,7 +19,7 @@ but nothing much. Usually use Python modules for fast remote
       {h}
     </h2>
     <p
-      class="font-mainFont  md:text-lg md:w-full lg:text-2xl text-md  sm:w-full w-[90%] whitespace-normal"
+      class="font-mainFont md:text-lg md:w-full lg:text-2xl text-md sm:w-full w-[90%] whitespace-normal"
     >
       {body}
     </p>

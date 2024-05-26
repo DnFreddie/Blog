@@ -1,31 +1,31 @@
 <script lang="ts">
-import WaitScreen from '$lib/utils/wait_screen.svelte';
+  import WaitScreen from "$lib/utils/wait_screen.svelte";
   export let data;
 </script>
 
 <div class="min-h-screen bg-gray-900">
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-4 lg:gap-8 2xl:px-32 lg:px-8 py-10 sm:px-2 px-4">
-     {#await data.poems.item}
-<WaitScreen/>
-
-                {:then item}
-    {#each item as { title, img, date }}
-      <div class="">
-        <div class=" p-4 bg-transparent rounded-lg">
-          <a href="/poems/{title}">
-            <img src={img} alt="" class="rounded-lg w-full aspect-video" />
-          </a>
-          <div class="flex flex-col py-2">
-            <p class="text-gray-500 italic">{date}</p>
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 justify-center items-center gap-4 lg:gap-8 2xl:px-32 lg:px-8 py-10 sm:px-2 px-4"
+  >
+    {#await data.poems.item}
+      <WaitScreen />
+    {:then item}
+      {#each item as { title, img, date }}
+        <div class="">
+          <div class=" p-4 bg-transparent rounded-lg">
             <a href="/poems/{title}">
-              <p class="text-2xl font-semibold text-white">
-                {title.charAt(0).toUpperCase() +
-                  title.slice(1).replaceAll("-", " ")}
-              </p>
+              <img src={img} alt="" class="rounded-lg w-full aspect-video" />
             </a>
-          </div>
-          <div class="text-white flex-row flex items-center space-x-2">
+            <div class="flex flex-col py-2">
+              <p class="text-gray-500 italic">{date}</p>
+              <a href="/poems/{title}">
+                <p class="text-2xl font-semibold text-white">
+                  {title.charAt(0).toUpperCase() +
+                    title.slice(1).replaceAll("-", " ")}
+                </p>
+              </a>
+            </div>
+            <div class="text-white flex-row flex items-center space-x-2">
               <img
                 class="rounded-full"
                 src="/logo.ico"
@@ -33,13 +33,12 @@ import WaitScreen from '$lib/utils/wait_screen.svelte';
                 width="38"
                 height="38"
               />
-            <span class="text-xs italic">Soon there will be an NFT </span>
+              <span class="text-xs italic">Soon there will be an NFT </span>
+            </div>
           </div>
         </div>
-      </div>
-    {/each}
-            {/await}
-
+      {/each}
+    {/await}
   </div>
 </div>
 

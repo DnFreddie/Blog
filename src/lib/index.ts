@@ -56,8 +56,7 @@ export async function wrtieSpreadsheet(data, sheetName) {
   });
 }
 
-export async function getColl(app: FirebaseApp, col: string):Promise<any[]>{
-
+export async function getColl(app: FirebaseApp, col: string): Promise<any[]> {
   const firestore = getFirestore(app);
   const blogsCollection = collection(firestore, col);
   const querySnapshot = await getDocs(blogsCollection);

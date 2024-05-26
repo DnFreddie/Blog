@@ -18,7 +18,7 @@ export async function load({ params }) {
       throw new Error("Failed to fetch content");
     }
 
-    const blob = await  request.text();
+    const blob = await request.text();
 
     return {
       content: blob,

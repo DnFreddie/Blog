@@ -1,11 +1,9 @@
 import { initDb, getColl } from "$lib";
-import type{ RequestHandler } from "@sveltejs/kit";
-
+import type { RequestHandler } from "@sveltejs/kit";
 
 export const GET: RequestHandler = async ({}) => {
-    const app = initDb();
-    const collList = await getColl(app, "blogPosts");
-    
+  const app = initDb();
+  const collList = await getColl(app, "blogPosts");
 
-    return Response.json(collList)
-}
+  return Response.json(collList);
+};

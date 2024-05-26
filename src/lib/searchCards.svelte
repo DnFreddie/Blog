@@ -1,28 +1,44 @@
 <script lang="ts">
+  import { getContext } from "svelte";
+  import type { BlogPost } from "./utils";
 
-import type { BlogPost } from "./utils";
-  export let results : BlogPost[]
-export let open :Boolean
+  let results: BlogPost[] = getContext("blogPost") || [];
+  export let open: boolean = false;
   let searchValue = "";
- document.addEventListener('click', function(event) {
-    const searchBox = document.querySelector('.search-box');
-    const blurredOverlay = document.querySelector('.blurred-overlay');
-    const isClickInsideSearchBox = searchBox.contains(event.target);
-    const isInput = event.target.classList.contains('search-input');
-    
+
+  async function fetchBlogPosts(): Promise<BlogPost[]> {
+    try {
+      const response = await fetch("/api/posts");
+      const jsonData: BlogPost[] = await response.json();
+      return jsonData;
+    } catch (error) {
+      console.error("Error fetching blog posts:", error);
+      throw error;
+    }
+  }
+
+  async function fetchHandler() {
+    if (results.length === 0) {
+      results = await fetchBlogPosts();
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    const searchBox = document.querySelector(".search-box");
+    const isClickInsideSearchBox = searchBox?.contains(event.target as Node);
+    const isInput = (event.target as Element).classList.contains(
+      "search-input",
+    );
+
     if (!isClickInsideSearchBox && !isInput) {
-      // Clicked outside the search box (excluding the input), so close it
-      // Assuming you have a variable named 'open' that controls the visibility of the search box
       open = false;
-      // You might want to hide the blurred overlay as well
     }
   });
-
 
   function formatTimestamp(timestamp: string): string {
     const date = new Date(timestamp);
     const year = date.getFullYear();
-    const month = date.getMonth() + 1; // Month is 0-indexed
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     const paddedMonth = month.toString().padStart(2, "0");
     const paddedDay = day.toString().padStart(2, "0");
@@ -36,51 +52,50 @@ export let open :Boolean
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   }
-    $: searchPosts = results.filter(item => {
-        return item.title.toLowerCase().includes(searchValue.toLowerCase());
-    });
 
-
+  let searchPosts: BlogPost[];
+  $: searchPosts = results.filter((item) => {
+    return item.title.toLowerCase().includes(searchValue.toLowerCase());
+  });
 </script>
 
-  <div 
-    class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50"
-  >
-    <div class="search-box w-3/4 sm:w-1/2   ">
-      <label for="search" class="flex items-center w-full">
-        <span class="material-symbols-outlined text-[#578aa8]"> search </span>
-        <input
-          class="search-input w-3/4 sm:w-full"
-          type="search"
-          id="search"
-          placeholder="Search"
-          bind:value={searchValue}
-            autofocus={true}
-            autocomplete="off"
-
-        />
-      </label>
-    </div>
-    <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
-            
-        {#if  searchValue!= ''}
-            
-      {#each  searchPosts as post}
-            
-        <a
-          href={`/blog/${post.title}`}
-          class="no-underline blog-card"
-        >
-          <div class=" ">
-            <h2 class="blog-title">{formatString(post.title)}</h2>
-            <p class="blog-date">{formatTimestamp(post.date)}</p>
-          </div>
-        </a>
-      {/each}
-        {/if}
-    </div>
+<div
+  class="flex flex-col items-center justify-center absolute w-full top-0 sm:top-28 pt-4 z-50"
+>
+  <div class="search-box w-3/4 sm:w-1/2">
+    <label for="search" class="flex items-center w-full">
+      <span class="material-symbols-outlined text-[#578aa8]"> search </span>
+      <input
+        class="search-input w-3/4 sm:w-full"
+        type="search"
+        id="search"
+        placeholder="Search"
+        bind:value={searchValue}
+        autofocus
+        autocomplete="off"
+      />
+    </label>
   </div>
-  <div class="blurred-overlay bg-gray-800 opacity-80"></div>
+  <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
+    {#await fetchHandler()}
+      <p>Loading...</p>
+    {:then}
+      {#if searchValue !== ""}
+        {#each searchPosts as post}
+          <a href={`/blog/${post.title}`} class="no-underline blog-card">
+            <div>
+              <h2 class="blog-title">{formatString(post.title)}</h2>
+              <p class="blog-date">{formatTimestamp(post.date)}</p>
+            </div>
+          </a>
+        {/each}
+      {/if}
+    {:catch error}
+      <p>Error loading posts: {error.message}</p>
+    {/await}
+  </div>
+</div>
+<div class="blurred-overlay bg-gray-800 opacity-80"></div>
 
 <style>
   .search-box {

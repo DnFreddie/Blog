@@ -6,7 +6,7 @@ export async function load() {
 
   return {
     poems: {
-            item:poemsList
-        }
+      item: poemsList,
+    },
   };
 }

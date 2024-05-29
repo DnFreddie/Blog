@@ -49,7 +49,7 @@
   <div class="flex-1 flex justify-end space-x-3 mr-4 navbar">
     <a
       href="/"
-      class="lg:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
+      class="xl:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
                 {$page.url.pathname === '/'
         ? 'border-b-4 border-[#FCE8AE]'
         : ''}"
@@ -59,7 +59,7 @@
     {#each menuItems as item}
       <a
         href="/{item}"
-        class="lg:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
+        class="xl:block hidden text-white hover:bg-gray-700 px-3 py-1 rounded transition duration-300 text-xl font-semibold
   {$page.url.pathname.includes(item) ? 'border-b-4 border-[#FCE8AE]' : ''}"
       >
         {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -67,7 +67,7 @@
     {/each}
     <button
       on:click|stopPropagation={toggleMenu}
-      class="hamburger-menu-button text-4xl sm:text-4xl hamburger lg:hidden bg-black text-[#7833cc] rounded px-3 py-1 font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white z-35"
+      class="hamburger-menu-button text-4xl sm:text-4xl hamburger xl:hidden bg-black text-[#7833cc] rounded px-3 py-1 font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white z-35"
       >☰</button
     >
   </div>
@@ -75,7 +75,7 @@
 
 <div
   bind:this={menu}
-  class={`fixed top-0 right-0 w-1/3 sm:w-1/4 lg:hidden h-screen bg-gray-800 overflow-y-auto transform transition-transform ease-in-out duration-300 z-30 ${showMenu ? "translate-x-0" : "translate-x-full"}`}
+  class={`fixed top-0 right-0 w-1/3 sm:w-1/4 xl:hidden h-screen bg-gray-800 overflow-y-auto transform transition-transform ease-in-out duration-300 z-30 ${showMenu ? "translate-x-0" : "translate-x-full"}`}
 >
   <div class="flex flex-col items-center w-full">
     <img src="/newLogo.png" alt="" />

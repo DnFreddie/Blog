@@ -78,7 +78,7 @@
   </div>
   <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
     {#await fetchHandler()}
-      <p>Loading...</p>
+
     {:then}
       {#if searchValue !== ""}
         {#each searchPosts as post}

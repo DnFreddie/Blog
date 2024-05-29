@@ -43,7 +43,7 @@
       {#await data.posts.item}
         <WaitScreen />
       {:then item}
-        {#each item as post}
+        {#each quicSort(item) as post}
           <a href={`/blog/${post.title}`}>
             <div
               class="p-4 flex flex-row justify-between text-white postAnime post-box space-x-6"

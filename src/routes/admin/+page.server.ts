@@ -1,4 +1,5 @@
 import { initDb, addBlogPost } from "$lib";
+import { redirect } from "@sveltejs/kit";
 import { LOGIN_PASSWORD, LOGIN_MAIL } from "$env/static/private";
 export const actions = {
   uploadImage: async ({ request }) => {
@@ -22,3 +23,6 @@ export const actions = {
     return { success: false };
   },
 };
+export async function load() {
+  throw redirect(302, "/");
+}

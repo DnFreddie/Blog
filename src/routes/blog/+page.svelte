@@ -1,8 +1,8 @@
 <script lang="ts">
   //animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  import type { PageServerData } from "../$types.js";
   import WaitScreen from "$lib/utils/wait_screen.svelte";
-  import type { BlogPost } from "$lib/utils";
+
+  import type { BlogPost } from "$lib/utils/utils.js";
   export let data;
 
   function formatTimestamp(timestamp: string) {

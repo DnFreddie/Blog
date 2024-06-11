@@ -1,7 +1,8 @@
 <script lang="ts">
-import WaitScreen from "$lib/utils/wait_screen.svelte";
-  import { getScrollPercentage } from "$lib/utils";
-  import { renderMarkdown } from "$lib/mdRender";
+  import WaitScreen from "$lib/utils/wait_screen.svelte";
+  import { renderMarkdown } from "$lib/utils/mdRender";
+  import { getScrollPercentage } from "$lib/utils/utils.js";
+
   function scrollHandler() {
     let scrollPercentage = getScrollPercentage();
     if (scrollPercentage >= 4) {
@@ -27,7 +28,10 @@ import WaitScreen from "$lib/utils/wait_screen.svelte";
 
 <svelte:window on:scroll={scrollHandler} />
 <div
-  class="niceone flex justify-center min-h-screen  w-full h-full {scrolled? 'bg-black': 'bg-[#201C2C]'} ">
+  class="niceone flex justify-center min-h-screen w-full h-full {scrolled
+    ? 'bg-black'
+    : 'bg-[#201C2C]'} "
+>
   <div class="flex my-12">
     <div
       class="flex md:text-xl max-w-[1000px] text-white mx-2 text-xs text flex-col"
@@ -37,20 +41,17 @@ import WaitScreen from "$lib/utils/wait_screen.svelte";
       >
         {formatString(data.p.title)}
       </h1>
-          {#await data.p.content}
-
-                <WaitScreen/>
-
-        {:then blob}
-          {@html renderMarkdown(blob)}
-         {:catch error}
-          <p>Error: {error.message}</p>
-        {/await}
-
-
+      {#await data.p.content}
+        <WaitScreen />
+      {:then blob}
+        {@html renderMarkdown(blob)}
+      {:catch error}
+        <p>Error: {error.message}</p>
+      {/await}
     </div>
   </div>
 </div>
+
 <style>
   .niceone {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

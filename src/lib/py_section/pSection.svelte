@@ -1,6 +1,6 @@
 <script lang="ts">
-  import CodeEditor from "./py_section/codeEditor.svelte";
-  import DescriptionSection from "./description_section.svelte";
+  import CodeEditor from "./codeEditor.svelte";
+  import DescriptionSection from "$lib/utils/description_section.svelte";
 </script>
 
 <div

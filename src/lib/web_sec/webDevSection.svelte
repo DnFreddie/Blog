@@ -1,5 +1,5 @@
 <script>
-  import DescriptionSection from "./description_section.svelte";
+  import DescriptionSection from "$lib/utils/description_section.svelte";
   import AnimatedProjects from "./animated_projects.svelte";
   const description = `I have some knowledge of JavaScript, although not as much as I'd prefer. At work, I've created small interfaces with it. SvelteKit is my framework of choice, and it's what I've used to build this blog. Additionally, I've completed another professional project using Svelte, a website dedicated to the Horses . While I can handle frontend development, it's not my favorite aspect of programming`;
 </script>

@@ -1,6 +1,6 @@
 <script>
-  import Terminal from "$lib/terminal.svelte";
-  import DescriptionSection from "$lib/description_section.svelte";
+  import DescriptionSection from "$lib/utils/description_section.svelte";
+  import Terminal from "./terminal.svelte";
   const description = `I've been using Linux for 2 years, one year as my daily OS. Currently studying for CompTIA Linux+. I'm very familiar with the command line and CLI tools. Can write bash. I'm also knowledgeable about NixOS as it provided me with a great platform for testing
 and managing configs`;
 </script>

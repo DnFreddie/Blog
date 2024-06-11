@@ -77,9 +77,7 @@
     </label>
   </div>
   <div class="search-results w-3/4 md:w-1/2 lg:w-1/2 xl:w-2/5">
-    {#await fetchHandler()}
-
-    {:then}
+    {#await fetchHandler() then}
       {#if searchValue !== ""}
         {#each searchPosts as post}
           <a href={`/blog/${post.title}`} class="no-underline blog-card">

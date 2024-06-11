@@ -1,10 +1,10 @@
 <script lang="ts">
   import "../app.css";
-  import NavBar from "$lib/navBar.svelte";
-  import Footer from "$lib/footer.svelte";
   import posthog from "posthog-js";
   import { browser } from "$app/environment";
   import { beforeNavigate, afterNavigate } from "$app/navigation";
+  import NavBar from "$lib/layout/navBar.svelte";
+  import Footer from "$lib/layout/footer.svelte";
 
   if (browser) {
     beforeNavigate(() => posthog.capture("$pageleave"));

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getScrollPercentage } from "$lib/utils";
+  import { getScrollPercentage } from "$lib/utils/utils.js";
   function scrollHandler() {
     let scrollPercentage = getScrollPercentage();
     if (scrollPercentage >= 13) {

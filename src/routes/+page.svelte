@@ -1,11 +1,11 @@
 <script lang="ts">
-  import GoSection from "$lib/goSection.svelte";
-  import RustSection from "$lib/rustSection.svelte";
   import Linux from "$lib/linux_section/linux.svelte";
-  import PSection from "$lib/pSection.svelte";
+  import GoSection from "$lib/go_section/goSection.svelte";
+  import WebDevSection from "$lib/web_sec/webDevSection.svelte";
+  import PSection from "$lib/py_section/pSection.svelte";
 </script>
 
 <Linux />
 <PSection />
 <GoSection />
-<RustSection />
+<WebDevSection />

@@ -8,8 +8,8 @@
 
     </div>
     <div class="flex space-x-6 py-11 flex-row">
-      <a href="https://github.com/DnFreddie" target="_blank"><img src="/icons8-github-48.png" alt="github logo" /></a>
-      <a href="https://www.linkedin.com/in/fryderyk-%C5%82ysiak-b49426254/" target="_blank"><img src="/icons8-linkedin-48.png" alt="Linkedin" /></a>
+      <a href="https://github.com/DnFreddie" target="_blank"><img src="/icons8-github-64.png" alt="github logo" /></a>
+      <a href="https://www.linkedin.com/in/fryderyk-%C5%82ysiak-b49426254/" target="_blank"><img src="/icons8-linkedin-64.png" alt="Linkedin" /></a>
     </div>
   </div>
   </div>

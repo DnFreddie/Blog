@@ -25,7 +25,8 @@
       <h1
         class="text-4xl font-bold whitespace-normal py-4 text-[#b4befe] poemsBack"
       >
-        Don't break easy, Preserve best version of your sytsem
+                 Succumb  to the tech lifestyle
+
       </h1>
       {@html data.mRender}
     </div>

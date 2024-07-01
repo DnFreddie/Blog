@@ -19,10 +19,11 @@ export function renderMarkdown(mdString: string) {
       return `<strong class="text-[#fab387]">${text}</strong>`;
     },
     em(text) {
-      return `<em class="text-[#53FFEB]">  ${text}</em>`;
+      return `<em class="text-white">  ${text}</em>`;
     },
     codespan(code) {
-      return `<code>${code}</code>`;
+      return `<code class="bg-gray-100 text-red-500 p-2 rounded overflow-auto">${code}</code>`;
+
     },
     br() {
       return `<br />`;
@@ -38,6 +39,18 @@ export function renderMarkdown(mdString: string) {
     },
     paragraph(string, text) {
       return `<p class=" leading-5  sm:leading-8">${string}</p>`;
+    },
+        code(token ){
+
+      return `<code class="bg-gray-100 text-red-500 p-4 rounded overflow-auto">${token}</code>`;
+        },
+            list(body, ordered) {
+      const type = ordered ? 'ol' : 'ul';
+      const listStyle = ordered ? 'list-decimal' : 'list-disc';
+      return `<${type} class="${listStyle} pl-5 my-4 space-y-2">${body}</${type}>`;
+    },
+         listitem(text) {
+      return `<li class="mb-1">${text}</li>`;
     },
   };
 

@@ -43,7 +43,7 @@ export function renderMarkdown(mdString: string) {
         code(token ){
 
       return `
-            <code class="bg-black text-gray-300 overflow-auto rounded   whitespace-pre">${token}</code>
+            <code class="bg-gray-800  flex flex-col text-gray-300 p-1 overflow-auto rounded   whitespace-pre-wrap">${token}</code>
 `;
 
         },

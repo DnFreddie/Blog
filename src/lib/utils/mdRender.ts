@@ -22,7 +22,7 @@ export function renderMarkdown(mdString: string) {
       return `<em class="text-white">  ${text}</em>`;
     },
     codespan(code) {
-      return `<code class="bg-gray-100 text-red-500 p-2 rounded overflow-auto">${code}</code>`;
+      return `<code class="bg-gray-800 text-red-300 p-1 rounded overflow-auto">${code}</code>`;
 
     },
     br() {
@@ -42,7 +42,10 @@ export function renderMarkdown(mdString: string) {
     },
         code(token ){
 
-      return `<code class="bg-gray-100 text-red-500 p-4 rounded overflow-auto">${token}</code>`;
+      return `
+            <code class="bg-black text-gray-300 overflow-auto rounded   whitespace-pre">${token}</code>
+`;
+
         },
             list(body, ordered) {
       const type = ordered ? 'ol' : 'ul';

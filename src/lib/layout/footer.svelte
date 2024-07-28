@@ -9,7 +9,7 @@
   <div class="flex items-center justify-between w-full gap-24 sm:gap-0">
     <div class="flex gap-12">
       <img
-        src="/favicon.png"
+        src="/potentialLogo.jpg"
         alt="Logo"
         class="h-16 w-20 hidden md:flex rounded-lg"
       />

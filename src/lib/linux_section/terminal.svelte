@@ -82,10 +82,10 @@
                 interval={50}
               >
                 <p class=" absolute text-white whitespace-break-spaces">
-                  tmux my only window manager
+                  tmux my window manager
                 </p>
                 <p class="text-white">#vimuser</p>
-                <p class="text-white">{"bash- better zsh "}</p>
+                <p class="text-white">{"bash == better zsh "}</p>
               </Typewriter>
             </div>
           </div>
@@ -94,7 +94,7 @@
           class="flex bg-[#90A858] md:text-lg sm:text-sm text-xs flex-row justify-between px-4"
         >
           <p class=" ">0:bash*</p>
-          <p class=" ">"dnf@nixos:~" {getCustomDateFormat(currentDateTime)}</p>
+          <p class=" ">"dnf@rocky:~" {getCustomDateFormat(currentDateTime)}</p>
         </div>
       </div>
     </div>

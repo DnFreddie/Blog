@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import DescriptionSection from "$lib/utils/description_section.svelte";
   import Terminal from "./terminal.svelte";
-  const description = `I've been using Linux for 2 years, one year as my daily OS. Currently studying for CompTIA Linux+. I'm very familiar with the command line and CLI tools. Can write bash. I'm also knowledgeable about NixOS as it provided me with a great platform for testing
-and managing configs`;
+
+  const description = `I have been using Linux for two years as my primary operating system. 
+I hold the CompTIA Linux+ certification and am well-versed in command line interfaces and CLI tools. Additionally, I have experience writing Bash scripts. Currently, I use Rocky Linux as my distro.`;
 </script>
 
 <div class="bg-gradient-to-b from-[#895cd1] via-[#2b125f] to-[#3f0f4c] flex">
@@ -13,7 +14,7 @@ and managing configs`;
       <DescriptionSection
         h="Linux and stability"
         body={description}
-        img="linux_logo.png"
+        img="linuxplus-logo.png"
       />
     </div>
     <div class="flex px-6">

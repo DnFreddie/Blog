@@ -1,7 +1,7 @@
 <script lang="ts">
   export let h: string = "Quick and Dirty with Python";
   export let img: string = "p_section_pyIcon.png";
-  export let body = `I used Python at work primarily to work with datasets and clients
+  export let body = `I used Python at my job primarily to work with datasets and clients
 websites.
 Mostly to gather data via scraping or cleaning product
 information with the Pandas library. \n Implemented a couple of parsers

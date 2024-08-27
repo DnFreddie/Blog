@@ -2,29 +2,25 @@ import { initDb, getItem } from "$lib";
 import { error } from "@sveltejs/kit";
 
 export async function load({ params }) {
+  const app = initDb();
+  const slug = params.poem;
+
   try {
-    const app = initDb();
-    const slug = params.poem;
-    const item = getItem(app, slug, "poems", "title")
-      .then((data) => {
-        if (!data || data.length === 0) {
-          throw new Error("Blog Post not found");
-        } else {
-          const firstItem = data[0];
-          return firstItem;
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const data = await getItem(app, slug, "poems", "title");
+
+    if (!data || data.length === 0) {
+      throw error(404, { message: "Poem not found" });
+    }
+
+    const firstItem = data[0];
 
     return {
       p: {
         title: slug,
-        item: item,
+        item: firstItem,
       },
     };
   } catch (e) {
-    throw error(404, { message: "Blog Post does not Exits" });
+    throw error(404, { message: "Poem does not exist" });
   }
 }
